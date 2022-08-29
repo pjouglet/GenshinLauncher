@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Launcher.Model;
+using Newtonsoft.Json;
 using PU_Test.Model;
 using System;
 using System.Collections.Generic;
@@ -56,68 +57,94 @@ namespace PU_Test.Common
             return result;
         }
 
-            class REPDT
+        class REPDT
+        {
+            public class Status
             {
-                public class Status
-                {
-                    /// <summary>
-                    /// 
-                    /// </summary>
-                    public int playerCount { get; set; }
-                    /// <summary>
-                    /// 
-                    /// </summary>
-                    public string version { get; set; }
-                }
-
-                public class Root
-                {
-                    /// <summary>
-                    /// 
-                    /// </summary>
-                    public int retcode { get; set; }
-                    /// <summary>
-                    /// 
-                    /// </summary>
-                    public Status status { get; set; }
-                }
-
+                /// <summary>
+                /// 
+                /// </summary>
+                public int playerCount { get; set; }
+                /// <summary>
+                /// 
+                /// </summary>
+                public string version { get; set; }
             }
 
-
-            public static async Task<ServerInfo> GetAsync(string ip)
+            public class Root
             {
-
-                var Url = $"https://{ip}/status/server";
-                Stopwatch sw = new Stopwatch();
-                sw.Start();
-
-                var r = await HttpGet(url: Url);
-
-                sw.Stop();
-                REPDT.Root dt;
-                try
-                {
-                    dt = JsonConvert.DeserializeObject<REPDT.Root>(r);
-
-                }
-                catch
-                {
-                    dt = new REPDT.Root();
-                }
-
-                var SI= new ServerInfo();
-                SI.players = dt.status.playerCount.ToString();
-                SI.ver = dt.status.version;
-                SI.timeout = sw.ElapsedMilliseconds.ToString();
-
-
-                return SI;
-
-
-
+                /// <summary>
+                /// 
+                /// </summary>
+                public int retcode { get; set; }
+                /// <summary>
+                /// 
+                /// </summary>
+                public Status status { get; set; }
             }
 
         }
-    
+
+
+        public static async Task<ServerInfo> GetAsync(string ip)
+        {
+
+            var Url = $"https://{ip}/status/server";
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+
+            var r = await HttpGet(url: Url);
+
+            sw.Stop();
+            REPDT.Root dt;
+            try
+            {
+                dt = JsonConvert.DeserializeObject<REPDT.Root>(r);
+
+            }
+            catch
+            {
+                dt = new REPDT.Root();
+            }
+
+            var SI= new ServerInfo();
+            SI.players = dt.status.playerCount.ToString();
+            SI.ver = dt.status.version;
+            SI.timeout = sw.ElapsedMilliseconds.ToString();
+
+
+            return SI;
+
+
+
+        }
+
+        internal static async Task<List<AnnounceMentItem>> GetAnnounceAsync(string ip)
+        {
+
+            var Url = $"https://{ip}/glannouncement/list";
+            Stopwatch sw = new Stopwatch();
+
+            var r = await HttpGet(url: Url);
+
+            List< AnnounceMentItem> ret;
+            try
+            {
+                ret = JsonConvert.DeserializeObject<List<AnnounceMentItem>>(r);
+
+            }catch (Exception ex)
+            {
+                ret=new List<AnnounceMentItem>();
+            }
+
+
+            return ret;
+
+
+
+        }
+
+
+    }
+
 }

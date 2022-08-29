@@ -11,6 +11,7 @@
     Title="MainWindow"
     Width="1300"
     Height="750"
+    Loaded="Window_Loaded"
     d:DataContext="{d:DesignInstance Type=vm:MainWindow}"
     ResizeMode="CanMinimize"
     WindowStyle="None"
@@ -125,7 +126,7 @@
                         Style="{DynamicResource TabItemStyle1}"
                         ToolTip="点击刷新">
                         <StackPanel Margin="10" MouseLeftButtonDown="RefreshServerInfo">
-                            <TextBlock HorizontalAlignment="Center" Text="ServerInfo" />
+                            <!--<TextBlock HorizontalAlignment="Center" Text="ServerInfo" />-->
                             <TextBlock>
                                 <Run Text="[Ping]:" />
                                 <Run Text="{Binding ServerInfo.timeout}" />
@@ -142,16 +143,33 @@
                         </StackPanel>
                     </TabItem>
                     <TabItem Header="公告" Style="{DynamicResource TabItemStyle1}">
-                        <StackPanel>
-                            <TextBlock Margin="10">
-                                开源地址：<Hyperlink
-                                    Cursor="Hand"
-                                    MouseLeftButtonDown="GoToBroswer"
-                                    Tag="https://github.com/gc-toolkit/GenshinLauncher">
-                                    SwetyCore/GenshinLauncher
-                                </Hyperlink>
-                            </TextBlock>
-                        </StackPanel>
+                        <ItemsControl ItemsSource="{Binding AnnounceMents}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock
+                                            Margin="10 5"
+                                            Cursor="Hand"
+                                            MouseLeftButtonDown="GoToBroswer"
+                                            Tag="{Binding url}"
+                                            Text="{Binding content}" />
+                                        <TextBlock
+                                            Grid.Column="1"
+                                            Margin="10 5"
+                                            Cursor="Hand"
+                                            MouseLeftButtonDown="GoToBroswer"
+                                            Tag="{Binding url}"
+                                            Text="{Binding time}" />
+
+
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
                     </TabItem>
                 </TabControl>
             </Grid>

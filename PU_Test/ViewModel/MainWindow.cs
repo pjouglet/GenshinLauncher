@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Launcher.Model;
 using Newtonsoft.Json;
 using PU_Test.Common;
 using PU_Test.Common.Game;
@@ -13,11 +14,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace PU_Test.ViewModel
 {
     partial class MainWindow : ObservableObject
     {
+        DispatcherTimer dispatcherTimer = new DispatcherTimer() { Interval=new TimeSpan(0, 0, 0, 10) };
 
         public ProxyHelper.ProxyController proxyController;
 
@@ -27,11 +30,14 @@ namespace PU_Test.ViewModel
             {
                 launcherConfig=JsonConvert.DeserializeObject<LauncherConfig>(File.ReadAllText("config.json"));
 
-                Task.Run(async () =>
-                {
-                    ServerInfo = await ServerInfoGetter.GetAsync(launcherConfig.ProxyConfig.ProxyServer);
+                //Task.Run(async () =>
+                //{
+                //    ServerInfo = await ServerInfoGetter.GetAsync(launcherConfig.ProxyConfig.ProxyServer);
+                //    AnnounceMents = await ServerInfoGetter.GetAnnounceAsync(launcherConfig.ProxyConfig.ProxyServer);
 
-                });
+                UpdateSI();
+
+                //});
             }
             catch (Exception ex)
             {
@@ -54,13 +60,25 @@ namespace PU_Test.ViewModel
             }
             ShowPatchStatue();
 
+            dispatcherTimer.Tick += (a, b) =>
+            {
+                UpdateSI();
+            };
+
+            dispatcherTimer.Start();
+
+
         }
+
+        [ObservableProperty]
+        private List<AnnounceMentItem> announceMents;
 
         public void UpdateSI()
         {
             Task.Run(async () =>
             {
                 ServerInfo = await ServerInfoGetter.GetAsync(launcherConfig.ProxyConfig.ProxyServer);
+                AnnounceMents = await ServerInfoGetter.GetAnnounceAsync(launcherConfig.ProxyConfig.ProxyServer);
 
             });
         }

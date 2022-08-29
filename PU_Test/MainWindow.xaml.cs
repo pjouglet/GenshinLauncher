@@ -66,5 +66,10 @@ namespace PU_Test
                 vm.UpdateSI();
 
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            vm.UpdateSI();
+        }
     }
 }
