@@ -13,7 +13,7 @@
 ✅ 直接修补metadata文件  
 ⛔️ 直接修补userassemby文件  
 ✅ 服务器状态  
-⛔️ 自定义公告（暂未找到支持公告api的服务端） 
+✅ 自定义公告（ 需要服务端安装 [gc-toolkit/GLAnnouncement](https://github.com/gc-toolkit/GLAnnouncement) )
 
 ## 🖼️效果
 ![](Preview/main.png)
