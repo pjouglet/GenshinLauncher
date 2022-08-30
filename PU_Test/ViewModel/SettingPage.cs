@@ -77,6 +77,21 @@ namespace PU_Test.ViewModel
             ShowPatchStatue();
         }
         [RelayCommand]
+        private void SearchGameFile()
+        {
+            launcherConfig.GameInfo = new GameInfo(GameHelper.GameRegReader.GetGameExePath());
+            if (File.Exists(launcherConfig.GameInfo.GameExePath))
+            {
+                MessageBox.Show($"已找到位于{launcherConfig.GameInfo.GameExePath}的游戏文件!");
+            }
+            else
+            {
+                MessageBox.Show($"搜索失败，注册表中没有相关信息!");
+
+            }
+
+        }
+        [RelayCommand]
         private void SetGameExePath()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
