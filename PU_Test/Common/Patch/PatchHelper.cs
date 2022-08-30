@@ -1,15 +1,12 @@
 ﻿using Newtonsoft.Json;
 using PU_Test.Model;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using static PU_Test.Model.GameInfo;
 
@@ -43,7 +40,7 @@ namespace PU_Test.Common.Patch
 
             var gamedir = Path.GetDirectoryName(gameInfo.GameExePath);
 
-            var lines =File.ReadAllLines(Path.Combine(gamedir,PKG_VERSION_FILE));
+            var lines = File.ReadAllLines(Path.Combine(gamedir, PKG_VERSION_FILE));
 
             string target = null;
             foreach (var item in lines)
@@ -77,24 +74,24 @@ namespace PU_Test.Common.Patch
             {
                 throw new Exception("GetMD5HashFromFile() fail,error:" + ex.Message);
             }
-            
+
         }
 
         public void BackUpFile(string FILE_NAME)
         {
             var gamedir = Path.GetDirectoryName(gameInfo.GameExePath);
 
-            string official=string.Empty;
-            string backup=string.Empty;
+            string official = string.Empty;
+            string backup = string.Empty;
             if (File.Exists(FILE_NAME))
             {
-                official=GetHashFromPkgVer("Managed/Metadata/global-metadata.dat");
+                official = GetHashFromPkgVer("Managed/Metadata/global-metadata.dat");
 
-                string currentMd5 = GetHashFromFile(Path.Combine(GetPatchDir(),METADATA_FILE_NAME));
+                string currentMd5 = GetHashFromFile(Path.Combine(GetPatchDir(), METADATA_FILE_NAME));
 
-                if (File.Exists(Path.Combine(GetPatchDir(), METADATA_FILE_NAME+".bak")))
+                if (File.Exists(Path.Combine(GetPatchDir(), METADATA_FILE_NAME + ".bak")))
                 {
-                    backup= GetHashFromFile(Path.Combine(GetPatchDir(), METADATA_FILE_NAME+".bak"));
+                    backup = GetHashFromFile(Path.Combine(GetPatchDir(), METADATA_FILE_NAME + ".bak"));
                 }
 
                 //官方与备份相同，不用备份
@@ -103,10 +100,10 @@ namespace PU_Test.Common.Patch
                     return;
                 }
                 //官方与现存相同
-                if (official==currentMd5)
+                if (official == currentMd5)
                 {
-                        //备份
-                        File.Copy(FILE_NAME, FILE_NAME + ".bak");
+                    //备份
+                    File.Copy(FILE_NAME, FILE_NAME + ".bak");
 
 
                 }
@@ -123,19 +120,19 @@ namespace PU_Test.Common.Patch
         }
 
         public void RestoreFile(string FILE_NAME)
-        { 
-            if (File.Exists( FILE_NAME + ".bak"))
+        {
+            if (File.Exists(FILE_NAME + ".bak"))
             {
                 var backup = GetHashFromFile(Path.Combine(GetPatchDir(), METADATA_FILE_NAME + ".bak"));
-                var official=GetHashFromPkgVer("Managed/Metadata/global-metadata.dat");
+                var official = GetHashFromPkgVer("Managed/Metadata/global-metadata.dat");
 
-                if (official!=backup)
+                if (official != backup)
                 {
                     MessageBox.Show("备份文件不是官方文件，恢复失败！");
 
                     return;
                 }
-                
+
                 File.Copy(FILE_NAME + ".bak", FILE_NAME, true);
                 MessageBox.Show("成功恢复了备份文件！");
             }
@@ -288,12 +285,12 @@ namespace PU_Test.Common.Patch
             {
                 var official = GetHashFromPkgVer("Managed/Metadata/global-metadata.dat");
 
-                var current  = GetHashFromFile(Path.Combine(GetPatchDir(), METADATA_FILE_NAME));
+                var current = GetHashFromFile(Path.Combine(GetPatchDir(), METADATA_FILE_NAME));
 
                 //不相同即为已 Patch
                 //var r1 = !isValidFileContent(Path.Combine(dir, METADATA_FILE_NAME), Path.Combine(dir, METADATA_FILE_NAME + ".bak"));
 
-                if (current!=official)
+                if (current != official)
                 {
                     result = PatchType.MetaData;
                 }

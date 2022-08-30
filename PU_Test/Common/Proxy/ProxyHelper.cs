@@ -1,13 +1,9 @@
 ﻿using Microsoft.Win32;
 using PU_Test.Model;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using Titanium.Web.Proxy;
 using Titanium.Web.Proxy.EventArguments;
 using Titanium.Web.Proxy.Models;
@@ -90,7 +86,7 @@ namespace PU_Test.Common.Proxy
             {
                 if (GetCurrentProxy().ProxyEnable)
                 {
-                   Clear_Proxy();
+                    Clear_Proxy();
                 }
 
                 proxyServer = new ProxyServer();

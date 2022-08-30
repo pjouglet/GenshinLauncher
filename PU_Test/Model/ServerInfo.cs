@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PU_Test.Model
+﻿namespace PU_Test.Model
 {
     public class ServerInfo
     {
@@ -15,5 +9,5 @@ namespace PU_Test.Model
 
         public string ver { get; set; } = "N/A";
     }
-   
+
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Launcher.Model
+﻿namespace Launcher.Model
 {
     internal class AnnounceMentItem
     {
@@ -21,7 +15,7 @@ namespace Launcher.Model
         /// 
         /// </summary>
         public string time { get; set; }
-    
+
 
 
 

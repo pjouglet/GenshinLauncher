@@ -6,16 +6,12 @@ using PU_Test.Common.Game;
 using PU_Test.Common.Patch;
 using PU_Test.Model;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace PU_Test.ViewModel
 {
-    partial class SettingPage:ObservableObject
+    partial class SettingPage : ObservableObject
     {
         [ObservableProperty]
         private LauncherConfig launcherConfig;
@@ -86,11 +82,11 @@ namespace PU_Test.ViewModel
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "原神游戏程序（YuanShen.exe)|YuanShen.exe|原神游戏程序(GenshinImpact.exe)|GenshinImpact.exe";
             openFileDialog.Multiselect = false;
-            if (openFileDialog.ShowDialog()==true)
+            if (openFileDialog.ShowDialog() == true)
             {
                 //此处做你想做的事 
                 launcherConfig.GameInfo = new GameInfo(openFileDialog.FileName);
-                
+
             }
 
         }

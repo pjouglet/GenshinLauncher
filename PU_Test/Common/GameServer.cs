@@ -4,11 +4,7 @@ using PU_Test.Model;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
-using System.Net.Security;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,28 +21,28 @@ namespace PU_Test.Common
             handler.ServerCertificateCustomValidationCallback = delegate { return true; };
             #region 参数添加
             StringBuilder builder = new StringBuilder();
-                        builder.Append(url);
-                        if (dic != null)
-                        {
+            builder.Append(url);
+            if (dic != null)
+            {
 
-                            if (dic.Count > 0)
-                            {
-                                builder.Append("?");
-                                int i = 0;
-                                foreach (var item in dic)
-                                {
-                                    if (i > 0)
-                                        builder.Append("&");
-                                    builder.AppendFormat("{0}={1}", item.Key, item.Value);
-                                    i++;
-                                }
-                            }
-                        }
+                if (dic.Count > 0)
+                {
+                    builder.Append("?");
+                    int i = 0;
+                    foreach (var item in dic)
+                    {
+                        if (i > 0)
+                            builder.Append("&");
+                        builder.AppendFormat("{0}={1}", item.Key, item.Value);
+                        i++;
+                    }
+                }
+            }
             #endregion
             try
             {
 
-                response = await new HttpClient(handler) .GetAsync(new Uri(builder.ToString()));
+                response = await new HttpClient(handler).GetAsync(new Uri(builder.ToString()));
             }
             catch (Exception e)
             {
@@ -107,7 +103,7 @@ namespace PU_Test.Common
                 dt = new REPDT.Root();
             }
 
-            var SI= new ServerInfo();
+            var SI = new ServerInfo();
             SI.players = dt.status.playerCount.ToString();
             SI.ver = dt.status.version;
             SI.timeout = sw.ElapsedMilliseconds.ToString();
@@ -127,14 +123,15 @@ namespace PU_Test.Common
 
             var r = await HttpGet(url: Url);
 
-            List< AnnounceMentItem> ret;
+            List<AnnounceMentItem> ret;
             try
             {
                 ret = JsonConvert.DeserializeObject<List<AnnounceMentItem>>(r);
 
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                ret=new List<AnnounceMentItem>();
+                ret = new List<AnnounceMentItem>();
             }
 
 

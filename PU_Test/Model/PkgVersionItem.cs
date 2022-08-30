@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PU_Test.Model
+﻿namespace PU_Test.Model
 {
     public class PkgVersionItem
     {
@@ -20,6 +14,6 @@ namespace PU_Test.Model
         /// 
         /// </summary>
         public int fileSize { get; set; }
-        
+
     }
 }

@@ -10,8 +10,6 @@ using PU_Test.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
@@ -20,7 +18,7 @@ namespace PU_Test.ViewModel
 {
     partial class MainWindow : ObservableObject
     {
-        DispatcherTimer dispatcherTimer = new DispatcherTimer() { Interval=new TimeSpan(0, 0, 0, 10) };
+        DispatcherTimer dispatcherTimer = new DispatcherTimer() { Interval = new TimeSpan(0, 0, 0, 10) };
 
         public ProxyHelper.ProxyController proxyController;
 
@@ -28,7 +26,7 @@ namespace PU_Test.ViewModel
         {
             try
             {
-                launcherConfig=JsonConvert.DeserializeObject<LauncherConfig>(File.ReadAllText("config.json"));
+                launcherConfig = JsonConvert.DeserializeObject<LauncherConfig>(File.ReadAllText("config.json"));
 
                 //Task.Run(async () =>
                 //{
@@ -52,7 +50,7 @@ namespace PU_Test.ViewModel
             try
             {
 
-                
+
             }
             catch (Exception ex)
             {
@@ -103,7 +101,7 @@ namespace PU_Test.ViewModel
         private LauncherConfig launcherConfig;
 
         [ObservableProperty]
-        private string startGameBtnText="开始游戏";
+        private string startGameBtnText = "开始游戏";
 
         [ObservableProperty]
         private string patchStatueStr = "未知";
@@ -111,12 +109,12 @@ namespace PU_Test.ViewModel
         [ObservableProperty]
         private ServerInfo serverInfo = new ServerInfo();
 
-        private bool IsGameRunning=false;
+        private bool IsGameRunning = false;
 
         [RelayCommand]
         private void StartGame()
         {
-            if (new PatchHelper(launcherConfig.GameInfo).GetPatchStatue()==PatchHelper.PatchType.None)
+            if (new PatchHelper(launcherConfig.GameInfo).GetPatchStatue() == PatchHelper.PatchType.None)
             {
                 GameHelper.StartGame(launcherConfig.GameInfo.GameExePath);
                 return;
@@ -131,16 +129,16 @@ namespace PU_Test.ViewModel
                 }
                 IsGameRunning = true;
 
-                proxyController = new ProxyHelper.ProxyController(host: launcherConfig.ProxyConfig.ProxyServer,port: launcherConfig.ProxyConfig.ProxyPort);
+                proxyController = new ProxyHelper.ProxyController(host: launcherConfig.ProxyConfig.ProxyServer, port: launcherConfig.ProxyConfig.ProxyPort);
                 proxyController.Start();
                 StartGameBtnText = "关闭代理";
                 GameHelper.StartGame(launcherConfig.GameInfo.GameExePath);
-                
+
 
             }
             else
             {
-                if (proxyController!=null)
+                if (proxyController != null)
                 {
 
                     proxyController.Stop();
@@ -153,7 +151,7 @@ namespace PU_Test.ViewModel
         }
         private bool CheckCfg()
         {
-            if (launcherConfig.GameInfo!=null)
+            if (launcherConfig.GameInfo != null)
             {
                 return true;
             }
