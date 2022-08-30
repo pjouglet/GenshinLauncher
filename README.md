@@ -11,7 +11,7 @@
 ✅ 自带代理  
 ✅ 自定义部分页面资源  
 ✅ 直接修补metadata文件  
-⛔️ 直接修补userassemby文件  
+⛔️ 直接修补userassembly文件  
 ✅ 服务器状态  
 ✅ 自定义公告（ 需要服务端安装 [gc-toolkit/GLAnnouncement](https://github.com/gc-toolkit/GLAnnouncement) )
 
