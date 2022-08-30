@@ -127,14 +127,13 @@
                         ToolTip="点击刷新">
                         <StackPanel Margin="10" MouseLeftButtonDown="RefreshServerInfo">
                             <!--<TextBlock HorizontalAlignment="Center" Text="ServerInfo" />-->
-                            <TextBlock>
+                            <TextBlock LineHeight="32">
                                 <Run Text="[Ping]:" />
                                 <Run Text="{Binding ServerInfo.timeout}" />
                                 <Run Text="ms" />
                                 <LineBreak />
                                 <Run Text="[在线]:" />
                                 <Run Text="{Binding ServerInfo.players}" />
-                                <Run Text="人" />
                                 <LineBreak />
 
                                 <Run Text="[版本]:" />
