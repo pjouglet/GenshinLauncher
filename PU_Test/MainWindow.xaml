@@ -11,8 +11,8 @@
     Title="MainWindow"
     Width="1300"
     Height="750"
-    Loaded="Window_Loaded"
     d:DataContext="{d:DesignInstance Type=vm:MainWindow}"
+    Loaded="Window_Loaded"
     ResizeMode="CanMinimize"
     WindowStyle="None"
     mc:Ignorable="d">
@@ -149,17 +149,17 @@
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition />
-                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="auto" />
                                         </Grid.ColumnDefinitions>
                                         <TextBlock
-                                            Margin="10 5"
+                                            Margin="10,5"
                                             Cursor="Hand"
                                             MouseLeftButtonDown="GoToBroswer"
                                             Tag="{Binding url}"
                                             Text="{Binding content}" />
                                         <TextBlock
                                             Grid.Column="1"
-                                            Margin="10 5"
+                                            Margin="10,5"
                                             Cursor="Hand"
                                             MouseLeftButtonDown="GoToBroswer"
                                             Tag="{Binding url}"

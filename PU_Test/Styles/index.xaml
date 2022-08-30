@@ -8,5 +8,6 @@
         <ResourceDictionary Source="Controls/SideBarTabStyle.xaml" />
         <ResourceDictionary Source="Controls/SimpleStyleButton.xaml" />
         <ResourceDictionary Source="Controls/PrimaryStyleButton.xaml" />
+        <ResourceDictionary Source="Controls/SimpleCheckBox.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

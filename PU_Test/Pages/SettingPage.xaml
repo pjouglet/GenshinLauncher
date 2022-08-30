@@ -119,6 +119,15 @@
 
                         </Grid>
 
+                        <CheckBox
+                            Height="26"
+                            Margin="0,10"
+                            VerticalContentAlignment="Center"
+                            FontSize="16"
+                            IsChecked="{Binding LauncherConfig.ProxyOnly}"
+                            Style="{DynamicResource SimpleCheckBox}">
+                            仅启用代理
+                        </CheckBox>
 
                         <TextBlock Margin="0,25,0,5" FontSize="20">
                             补丁工具

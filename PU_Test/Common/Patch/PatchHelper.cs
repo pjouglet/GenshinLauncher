@@ -16,6 +16,7 @@ namespace PU_Test.Common.Patch
     {
         GameInfo gameInfo;
         const string METADATA_FILE_NAME = "global-metadata.dat";
+        const string UA_FILE_NAME = "UserAssembly.dll";
         const string PKG_VERSION_FILE = "pkg_version";
         public PatchHelper(GameInfo info)
         {
@@ -27,6 +28,20 @@ namespace PU_Test.Common.Patch
             var gamedir = Path.GetDirectoryName(gameInfo.GameExePath);
             string file_path = Path.Combine(gamedir, "YuanShen_Data", "Managed", "Metadata");
             string file_path_osrel = Path.Combine(gamedir, "GenshinImpact_Data", "Managed", "Metadata");
+
+            if (gameInfo.GetGameType() == GameType.OS)
+            {
+                file_path = file_path_osrel;
+            }
+            return file_path;
+        }
+
+        private string GetUAPatchDir()
+        {
+            var ret = "";
+            var gamedir = Path.GetDirectoryName(gameInfo.GameExePath);
+            string file_path = Path.Combine(gamedir, "YuanShen_Data", "Native");
+            string file_path_osrel = Path.Combine(gamedir, "GenshinImpact_Data", "Native");
 
             if (gameInfo.GetGameType() == GameType.OS)
             {
@@ -293,6 +308,21 @@ namespace PU_Test.Common.Patch
                 if (current != official)
                 {
                     result = PatchType.MetaData;
+                }
+
+                official = GetHashFromPkgVer("UserAssembly.dll");
+                current = GetHashFromFile(Path.Combine(GetUAPatchDir(), UA_FILE_NAME));
+                if (current != official)
+                {
+                    if (result == PatchType.None)
+                    {
+                        result = PatchType.UserAssemby;
+
+                    }
+                    else
+                    {
+                        result = PatchType.All;
+                    }
                 }
 
             }

@@ -44,6 +44,7 @@ namespace PU_Test.ViewModel
                 launcherConfig.ProxyConfig.ProxyPort = "25565";
 
                 launcherConfig.GameInfo = new GameInfo(GameHelper.GameRegReader.GetGameExePath());
+                launcherConfig.ProxyOnly = false;
 
                 SaveConfig();
             }
@@ -114,6 +115,37 @@ namespace PU_Test.ViewModel
         [RelayCommand]
         private void StartGame()
         {
+
+
+            if (launcherConfig.ProxyOnly==true)
+            {
+                if (proxyController==null)
+                {
+                    proxyController = new ProxyHelper.ProxyController(host: launcherConfig.ProxyConfig.ProxyServer, port: launcherConfig.ProxyConfig.ProxyPort);
+                    proxyController.Start();
+                    StartGameBtnText = "关闭代理";
+                    return;
+
+                }
+                if (proxyController._IsRun==true)
+                {
+                    proxyController.Stop();
+                    proxyController = null;
+                    StartGameBtnText = "开始游戏";
+
+                }
+                else
+                {
+                    proxyController.Start();
+                    StartGameBtnText = "关闭代理";
+
+
+                }
+                return;
+            }
+            
+
+
             if (new PatchHelper(launcherConfig.GameInfo).GetPatchStatue() == PatchHelper.PatchType.None)
             {
                 GameHelper.StartGame(launcherConfig.GameInfo.GameExePath);
