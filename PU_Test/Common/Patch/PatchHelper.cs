@@ -24,7 +24,13 @@ namespace PU_Test.Common.Patch
         private string GetPatchDir()
         {
             var ret = "";
+            if (gameInfo == null)
+            {
+                //MessageBox.Show("游戏路径配置不正确");
+                return "";
+            }
             var gamedir = Path.GetDirectoryName(gameInfo.GameExePath);
+
             string file_path = Path.Combine(gamedir, "YuanShen_Data", "Managed", "Metadata");
             string file_path_osrel = Path.Combine(gamedir, "GenshinImpact_Data", "Managed", "Metadata");
 
@@ -38,7 +44,13 @@ namespace PU_Test.Common.Patch
         private string GetUAPatchDir()
         {
             var ret = "";
+            if (gameInfo == null)
+            {
+                //MessageBox.Show("游戏路径配置不正确");
+                return "";
+            }
             var gamedir = Path.GetDirectoryName(gameInfo.GameExePath);
+
             string file_path = Path.Combine(gamedir, "YuanShen_Data", "Native");
             string file_path_osrel = Path.Combine(gamedir, "GenshinImpact_Data", "Native");
 
@@ -288,15 +300,23 @@ namespace PU_Test.Common.Patch
             None,
             MetaData,
             UserAssemby,
-            All
+            All,
+            Unknown,
         }
         public PatchType GetPatchStatue()
         {
             PatchType result = PatchType.None;
-
-            var dir = GetPatchDir();
+            
             try
             {
+                var dir = GetPatchDir();
+
+                if (string.IsNullOrEmpty(dir))
+                {
+                    result=PatchType.Unknown;
+                    return result;
+                }
+
                 var official = GetHashFromPkgVer("Managed/Metadata/global-metadata.dat");
 
                 var current = GetHashFromFile(Path.Combine(GetPatchDir(), METADATA_FILE_NAME));

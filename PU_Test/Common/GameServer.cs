@@ -96,6 +96,10 @@ namespace PU_Test.Common
             try
             {
                 dt = JsonConvert.DeserializeObject<REPDT.Root>(r);
+                if (dt==null)
+                {
+                    return new ServerInfo();
+                }
 
             }
             catch

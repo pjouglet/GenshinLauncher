@@ -58,6 +58,7 @@ namespace PU_Test.ViewModel
             {
 
             }
+
             ShowPatchStatue();
 
             dispatcherTimer.Tick += (a, b) =>
@@ -91,6 +92,7 @@ namespace PU_Test.ViewModel
                 case PatchHelper.PatchType.All: PatchStatueStr = "已打补丁-ALL"; break;
                 case PatchHelper.PatchType.MetaData: PatchStatueStr = "已打补丁-Meta"; break;
                 case PatchHelper.PatchType.UserAssemby: PatchStatueStr = "已打补丁-UA"; break;
+                case PatchHelper.PatchType.Unknown: PatchStatueStr = "未知"; break;
             }
         }
         public void SaveConfig()
@@ -155,7 +157,7 @@ namespace PU_Test.ViewModel
             if (!IsGameRunning)
             {
 
-                if (!CheckCfg())
+                if (!CheckGameCfg())
                 {
                     MessageBox.Show("配置项不正确！");
                     return;
@@ -182,7 +184,7 @@ namespace PU_Test.ViewModel
             }
 
         }
-        private bool CheckCfg()
+        private bool CheckGameCfg()
         {
             if (launcherConfig.GameInfo != null)
             {
