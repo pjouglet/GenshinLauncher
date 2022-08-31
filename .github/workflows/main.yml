@@ -1,50 +1,35 @@
-name: .NET Build
+name: DotNet Development
 
 on:
-  push:
-    branches: [ master ]
   pull_request:
     branches: [ master ]
+  push:
+    branches: [ master ]
+
+  workflow_dispatch:
 
 jobs:
-
   build:
-
-    strategy:
-      matrix:
-        configuration: [Debug, Release]
-
-    runs-on: windows-latest
-
+    runs-on: windows-2022
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
+      - uses: actions/checkout@v3
+      - uses: microsoft/setup-msbuild@v1.1
+        with:
+          msbuild-architecture: x64
+      - uses: nuget/setup-nuget@v1.0.6
+        with:
+          nuget-version: 'latest'
 
-    # 安装 .NET Core
-    - name: Install .NET Core
-      uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: 5.0.x
+      - name: NuGet restore
+        run: nuget restore GenshinLauncher.sln
 
-    # 添加 MSBuild.exe 到环境变量: https://github.com/microsoft/setup-msbuild
-    - name: Setup MSBuild.exe
-      uses: microsoft/setup-msbuild@v1.0.2
+      - name: Build
+        run: msbuild GenshinLauncher.sln -p:Configuration=Release -m
 
-    # 安装 NuGet
-    - name: Setup NuGet
-      uses: nuget/setup-nuget@v1
-      with:
-        nuget-api-key: ${{ secrets.NuGetAPIKey }}
-        nuget-version: '5.x'
-
-    # 还原 NuGet 包
-    - name: NuGet restore
-      run: nuget restore
-
-    # 编译整个项目
-    - name: Build the solution
-      run: msbuild /p:Configuration=$env:Configuration
-      env:
-        Configuration: ${{ matrix.configuration }}
+      - name: Publish net60
+        uses: actions/upload-artifact@v3
+        id: publish_net6
+        with:
+          name: Launcher-NET6
+          path: |
+            PU_Test/bin/Release/net6.0-windows
