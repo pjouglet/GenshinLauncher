@@ -21,7 +21,7 @@ jobs:
           nuget-version: 'latest'
 
       - name: NuGet restore
-        run: nuget restore src/Wpf.Ui.sln
+        run: nuget restore GenshinLauncher.sln
 
       - name: Build
         run: msbuild GenshinLauncher.sln -p:Configuration=Release -m
