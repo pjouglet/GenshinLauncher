@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Launcher.Model;
 using Newtonsoft.Json;
@@ -117,9 +118,9 @@ namespace PU_Test.ViewModel
         {
 
 
-            if (launcherConfig.ProxyOnly==true)
+            if (launcherConfig.ProxyOnly == true)
             {
-                if (proxyController==null)
+                if (proxyController == null)
                 {
                     proxyController = new ProxyHelper.ProxyController(host: launcherConfig.ProxyConfig.ProxyServer, port: launcherConfig.ProxyConfig.ProxyPort);
                     proxyController.Start();
@@ -127,7 +128,7 @@ namespace PU_Test.ViewModel
                     return;
 
                 }
-                if (proxyController._IsRun==true)
+                if (proxyController._IsRun == true)
                 {
                     proxyController.Stop();
                     proxyController = null;
@@ -143,7 +144,7 @@ namespace PU_Test.ViewModel
                 }
                 return;
             }
-            
+
 
 
             if (new PatchHelper(launcherConfig.GameInfo).GetPatchStatue() == PatchHelper.PatchType.None)
