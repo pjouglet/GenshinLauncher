@@ -87,17 +87,12 @@
                     TextBlock.TextAlignment="Center">
                     <Border>
                         <Border.Background>
-                            <ImageBrush ImageSource="https://webstatic.mihoyo.com/upload/contentweb/2022/08/15/342eec514632f453b6813205a2bd2ef1_5965359969297441286.jpg" />
+                            <ImageBrush ImageSource="Resources/1.jpg" />
                         </Border.Background>
                     </Border>
                     <Border>
                         <Border.Background>
-                            <ImageBrush ImageSource="https://webstatic.mihoyo.com/upload/contentweb/2022/08/15/342eec514632f453b6813205a2bd2ef1_5965359969297441286.jpg" />
-                        </Border.Background>
-                    </Border>
-                    <Border>
-                        <Border.Background>
-                            <ImageBrush ImageSource="https://webstatic.mihoyo.com/upload/contentweb/2022/08/15/342eec514632f453b6813205a2bd2ef1_5965359969297441286.jpg" />
+                            <ImageBrush ImageSource="Resources/1.jpg" />
                         </Border.Background>
                     </Border>
                 </pu:Carousel>

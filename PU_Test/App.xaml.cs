@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Net;
 using System.Windows;
 
@@ -26,8 +27,8 @@ namespace PU_Test
             Console.WriteLine("UnHandled Exception Caught : " + e.Message);
             Console.WriteLine("Runtime terminating: {0}", args.IsTerminating);
 
-            MessageBox.Show(e.Message + "\n" + e.StackTrace, "程序崩溃了！");
-            System.IO.File.WriteAllText("err.log", e.Message + e.StackTrace);
+            MessageBox.Show(e.Message + "\n" + "请吧程序目录下的 err.log 提交至项目issues！", "程序崩溃了！");
+            System.IO.File.WriteAllText("err.log", e.Message + JsonConvert.SerializeObject(e));
             Environment.Exit(0);
 
         }
