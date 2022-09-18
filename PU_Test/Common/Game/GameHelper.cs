@@ -33,7 +33,8 @@ namespace PU_Test.Common.Game
             }
             else
             {
-                Debug.Print("找不到启动目标文件！");
+                //Debug.Print("找不到启动目标文件！");
+                MessageBox.Show("找不到启动目标文件");
             }
         }
 

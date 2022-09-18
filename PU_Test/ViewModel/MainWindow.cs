@@ -167,6 +167,7 @@ namespace PU_Test.ViewModel
                 proxyController = new ProxyHelper.ProxyController(host: launcherConfig.ProxyConfig.ProxyServer, port: launcherConfig.ProxyConfig.ProxyPort);
                 proxyController.Start();
                 StartGameBtnText = "关闭代理";
+
                 GameHelper.StartGame(launcherConfig.GameInfo.GameExePath);
 
 
