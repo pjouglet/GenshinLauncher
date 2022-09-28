@@ -139,10 +139,35 @@
                             Style="{DynamicResource SimpleCheckBox}">
                             仅启用代理
                         </CheckBox>
+                        <StackPanel Margin="0,25,0,5" Orientation="Horizontal">
 
-                        <TextBlock Margin="0,25,0,5" FontSize="20">
-                            补丁工具
-                        </TextBlock>
+                            <TextBlock FontSize="20">
+                                <Run Text="补丁工具" />
+
+                            </TextBlock>
+
+                            <Border
+                                Width="16"
+                                Height="16"
+                                Margin="4"
+                                VerticalAlignment="Center"
+                                Background="#d4c59b"
+                                CornerRadius="8"
+                                Cursor="Hand">
+                                <Border.ToolTip>
+                                    <Border>
+                                        <TextBlock Text="游戏版本为3.1 需要 UA 补丁， 其他版本请下载旧版启动器。" />
+                                    </Border>
+                                </Border.ToolTip>
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    FontWeight="Bold"
+                                    Foreground="White">
+                                    ?
+                                </TextBlock>
+                            </Border>
+                        </StackPanel>
                         <StackPanel Orientation="Horizontal">
 
                             <Button
@@ -152,15 +177,16 @@
                                 Command="{Binding PatchMetaCommand}"
                                 Content="Metadata补丁"
                                 FontSize="14"
-                                Style="{StaticResource ButtonStyle1}" />
+                                Style="{StaticResource ButtonStyle1}"
+                                Visibility="Collapsed" />
                             <Button
                                 Height="40"
-                                Margin="10,5"
+                                Margin="0,5"
                                 HorizontalAlignment="Left"
                                 Command="{Binding PatchUACommand}"
                                 Content="UserAssemby补丁"
                                 FontSize="14"
-                                Style="{StaticResource ButtonStyle1}" />
+                                Style="{StaticResource ButtonStyle2}" />
                         </StackPanel>
                         <Button
                             Height="40"

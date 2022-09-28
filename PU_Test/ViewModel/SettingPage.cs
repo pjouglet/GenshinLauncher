@@ -60,7 +60,20 @@ namespace PU_Test.ViewModel
         [RelayCommand]
         private void RestorePatch()
         {
-            new PatchHelper(launcherConfig.GameInfo).UnPatchMetaData();
+            var s = new PatchHelper(launcherConfig.GameInfo).GetPatchStatue();
+            if (s==PatchHelper.PatchType.None)
+            {
+            }
+            if (s == PatchHelper.PatchType.MetaData)
+            {
+                new PatchHelper(launcherConfig.GameInfo).UnPatchMetaData();
+
+            }
+            if (s == PatchHelper.PatchType.UserAssemby)
+            {
+                new PatchHelper(launcherConfig.GameInfo).UnPatchUserAssembly();
+
+            }
             ShowPatchStatue();
         }
         [RelayCommand]
@@ -72,8 +85,8 @@ namespace PU_Test.ViewModel
         [RelayCommand]
         private void PatchUA()
         {
-            //new PatchHelper(launcherConfig.GameInfo).PatchMetaData();
-            MessageBox.Show("暂不支持！");
+            new PatchHelper(launcherConfig.GameInfo).PatchUserAssembly();
+            //MessageBox.Show("暂不支持！");
             ShowPatchStatue();
         }
         [RelayCommand]
