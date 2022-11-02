@@ -9,19 +9,20 @@
     xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
     xmlns:vm="clr-namespace:PU_Test.ViewModel"
     Title="MainWindow"
-    Width="1300"
-    Height="750"
+    MinWidth="1300"
+    MinHeight="750"
     d:DataContext="{d:DesignInstance Type=vm:MainWindow}"
     Loaded="Window_Loaded"
-    ResizeMode="CanMinimize"
-    WindowStyle="None"
     mc:Ignorable="d">
     <Window.Background>
         <ImageBrush ImageSource="Resources/bg.png" />
 
     </Window.Background>
     <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="0" GlassFrameThickness="-1" />
+        <WindowChrome
+            CaptionHeight="0"
+            GlassFrameThickness="0"
+            NonClientFrameEdges="None" />
     </WindowChrome.WindowChrome>
     <Grid>
         <Grid.RowDefinitions>
