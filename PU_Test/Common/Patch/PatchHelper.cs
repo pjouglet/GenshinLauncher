@@ -23,25 +23,8 @@ namespace PU_Test.Common.Patch
         {
             gameInfo = info;
         }
-        private string GetMetadataPatchDir()
-        {
-            var ret = "";
-            if (gameInfo == null)
-            {
-                //MessageBox.Show("游戏路径配置不正确");
-                return "";
-            }
-            var gamedir = Path.GetDirectoryName(gameInfo.GameExePath);
 
-            string file_path = Path.Combine(gamedir, "YuanShen_Data", "Managed", "Metadata");
-            string file_path_osrel = Path.Combine(gamedir, "GenshinImpact_Data", "Managed", "Metadata");
 
-            if (gameInfo.GetGameType() == GameType.OS)
-            {
-                file_path = file_path_osrel;
-            }
-            return file_path;
-        }
         private string GetUAPatchDir()
         {
             var ret = "";
@@ -61,6 +44,7 @@ namespace PU_Test.Common.Patch
             }
             return file_path;
         }
+
         public string GetHashFromPkgVer(string filepath)
         {
 
@@ -193,130 +177,6 @@ namespace PU_Test.Common.Patch
             }
         }
 
-        public void PatchMetaData()
-        {
-            var file_path = GetMetadataPatchDir();
-            try
-            {
-
-                BackUpFile(Path.Combine(file_path, METADATA_FILE_NAME));
-
-                DoPatchMetaData(Path.Combine(file_path, METADATA_FILE_NAME));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                
-            }
-
-
-            MessageBox.Show("Patch完成!");
-        }
-
-        public void UnPatchMetaData()
-        {
-            var file_path = GetMetadataPatchDir();
-
-            RestoreFile(Path.Combine(file_path, METADATA_FILE_NAME));
-        }
-
-        #region 执行Patch Meta部分
-        public const string dispatchKey_FILE = @"key/dispatchKey.txt";
-        public const string passwordKey_FILE = @"key/passwordKey.txt";
-
-        [DllImport("MetadataConverterLib.dll", CallingConvention = CallingConvention.Cdecl)]
-        extern static int decrypt_global_metadata(ref byte data, ulong size);
-        [DllImport("MetadataConverterLib.dll", CallingConvention = CallingConvention.Cdecl)]
-        extern static int encrypt_global_metadata(ref byte data, ulong size);
-
-        public static byte[] ReplaceBytes(byte[] src, byte[] old, byte[] new_bytes)
-        {
-            byte[] dst = src;
-            int index = FindBytes(src, old);
-            if (index == -1)
-            {
-                return src;
-            }
-            if (index >= 0)
-            {
-                dst = new byte[src.Length - old.Length + new_bytes.Length];
-
-                Buffer.BlockCopy(src, 0, dst, 0, index);
-
-                Buffer.BlockCopy(new_bytes, 0, dst, index, new_bytes.Length);
-
-                Buffer.BlockCopy(
-                    src,
-                    index + old.Length,
-                    dst,
-                    index + new_bytes.Length,
-                    src.Length - (index + old.Length));
-            }
-            //i++;
-            return dst;
-        }
-
-        private static int FindBytes(byte[] src, byte[] find)
-        {
-            int index = -1;
-            int matchIndex = 0;
-
-            for (int i = 0; i < src.Length; i++)
-            {
-                if (src[i] == find[matchIndex])
-                {
-                    if (matchIndex == (find.Length - 1))
-                    {
-                        index = i - matchIndex;
-                        break;
-                    }
-                    matchIndex++;
-                }
-                else
-                {
-                    matchIndex = 0;
-                }
-
-            }
-#if DEBUG
-            Debug.Print("FindCount:" + index);
-#endif
-            return index;
-        }
-
-        public static void DoPatchMetaData(string METADATA_FILE)
-        {
-            byte[] ptrData = File.ReadAllBytes(METADATA_FILE);
-            //ulong size = (ulong)ptrData.Length;
-            var r = decrypt_global_metadata(ref ptrData[0], (ulong)ptrData.Length);
-
-            //Array.Resize<byte>(ref ptrData, ptrData.Length - 0x4000);
-
-            string datastr = Encoding.Default.GetString(ptrData);
-
-            const string pattern = @"<RSAKeyValue>((.|\n|\r)*?)</RSAKeyValue>";
-
-            var matches = Regex.Matches(datastr, pattern);
-
-            Match originpwdKey = matches[2];
-            Match origindisKey = matches[3];
-
-            byte[] dispatchKey = File.ReadAllBytes(dispatchKey_FILE);
-            byte[] passwordKey = File.ReadAllBytes(passwordKey_FILE);
-
-
-            byte[] newptrData = ReplaceBytes(ptrData, Encoding.Default.GetBytes(origindisKey.Value), dispatchKey);
-            newptrData = ReplaceBytes(newptrData, Encoding.Default.GetBytes(originpwdKey.Value), passwordKey);
-
-            //Array.Resize<byte>(ref newptrData, newptrData.Length + 0x4000);
-
-            var r1 = encrypt_global_metadata(ref newptrData[0], (ulong)newptrData.Length);
-
-
-            File.WriteAllBytes(METADATA_FILE, newptrData);
-        }
-
-        #endregion
 
         public enum PatchType
         {
@@ -326,34 +186,15 @@ namespace PU_Test.Common.Patch
             All,
             Unknown,
         }
+
         public PatchType GetPatchStatue()
         {
             PatchType result = PatchType.None;
             
             try
             {
-                var dir = GetMetadataPatchDir();
-
-                if (string.IsNullOrEmpty(dir))
-                {
-                    result=PatchType.Unknown;
-                    return result;
-                }
-
-                var official = GetHashFromPkgVer("Managed/Metadata/global-metadata.dat");
-
-                var current = GetHashFromFile(Path.Combine(dir, METADATA_FILE_NAME));
-
-                //不相同即为已 Patch
-                //var r1 = !isValidFileContent(Path.Combine(dir, METADATA_FILE_NAME), Path.Combine(dir, METADATA_FILE_NAME + ".bak"));
-
-                if (current != official)
-                {
-                    result = PatchType.MetaData;
-                }
-
-                official = GetHashFromPkgVer("UserAssembly.dll");
-                current = GetHashFromFile(Path.Combine(GetUAPatchDir(), UA_FILE_NAME));
+                var official = GetHashFromPkgVer("UserAssembly.dll");
+                var current = GetHashFromFile(Path.Combine(GetUAPatchDir(), UA_FILE_NAME));
                 if (current != official)
                 {
                     if (result == PatchType.None)
@@ -395,7 +236,16 @@ namespace PU_Test.Common.Patch
 
         private void DoPatchUserAssembly(string p)
         {
-            UA_Util.Patch_File(p,p);
+
+            try
+            {
+                new UA_Util(gameInfo).Patch(p);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("补丁失败"+ex);
+                return;
+            }
 
             MessageBox.Show("成功补丁了 UserAssembly.dll!");
         }

@@ -1,4 +1,6 @@
-﻿using PU_Test.Common.Patch;
+﻿using CommunityToolkit.Mvvm.DependencyInjection;
+using PU_Test.Common.Patch;
+using PU_Test.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,83 +8,224 @@ using System.Linq;
 using System.Text;
 using System.Threading.Channels;
 using System.Threading.Tasks;
+using static Launcher.Common.Patch.HexUtility;
 
 namespace Launcher.Common.Patch
 {
+    public class HexUtility
+        {
+            public static bool EqualsBytes(byte[] b1, params byte[] b2)
+            {
+                if (b1.Length != b2.Length)
+                    return false;
+                for (int i = 0; i < b1.Length; i++)
+                {
+                    if (b1[i] != b2[i])
+                        return false;
+                }
+                return true;
+            }
+
+            public static byte[] Replace(byte[] sourceByteArray, List<HexReplaceEntity> replaces)
+            {
+                byte[] newByteArray = new byte[sourceByteArray.Length];
+                Buffer.BlockCopy(sourceByteArray, 0, newByteArray, 0, sourceByteArray.Length);
+                int offset = 0;
+                foreach (HexReplaceEntity rep in replaces)
+                {
+                    if (EqualsBytes(rep.oldValue, rep.newValue))
+                    {
+                        continue;
+                    }
+
+                    for (; offset < sourceByteArray.Length; offset++)
+                    {
+                        if (sourceByteArray[offset] == rep.oldValue[0])
+                        {
+                            if (sourceByteArray.Length - offset < rep.oldValue.Length)
+                                break;
+
+                            bool find = true;
+                            for (int i = 1; i < rep.oldValue.Length - 1; i++)
+                            {
+                                if (sourceByteArray[offset + i] != rep.oldValue[i])
+                                {
+                                    find = false;
+                                    break;
+                                }
+                            }
+                            if (find)
+                            {
+                                Buffer.BlockCopy(rep.newValue, 0, newByteArray, offset, rep.newValue.Length);
+                                offset += (rep.newValue.Length - 1);
+                                break;
+                            }
+                        }
+                    }
+                }
+                return newByteArray;
+            }
+        
+
+        public class HexReplaceEntity
+        {
+            public byte[] oldValue { get; set; }
+
+            public byte[] newValue { get; set; }
+
+        }
+    }
+
+
     internal class UA_Util
     {
-        #region Byte 操作
 
-        public static readonly long Pas = 0x4889501048BA;
-        public static readonly long Pbs = 0x908000000048BA;
-        public static readonly byte[] Pbb = { 0x48, 0x89 };
-        public static byte[] GetBytesPa(int count)//0-13
+        const string CN_KEY = "key/UA-CN.txt";
+        const string OS_KEY = "key/UA-OS.txt";
+        const string GC_KEY = "key/UA-key.txt";
+        byte[] UA;
+        byte[] UA_CN;
+        byte[] UA_OS;
+        byte[] UA_key;
+
+        GameInfo gi;
+        public UA_Util(GameInfo gi)
         {
-            byte[] pa = BitConverter.GetBytes(Pas + (0x80000 * count));
-            Array.Resize(ref pa, 6);
-            pa = pa.Reverse().ToArray();
-            return pa;
-        }
-        public static byte[] GetBytesPb(int count)//0-28
-        {
-            byte[] pb = BitConverter.GetBytes(Pbs + (0x80000000000 * count));
-            Array.Resize(ref pb, 7);
-            byte[] pb2 = Pbb.Concat(pb.Reverse()).ToArray();
-            if (count >= 16)
+            this.gi=gi;
+            try
             {
-                pb2[2] = 0x90;
-                pb2[4] = 0x01;
+                UA_CN = File.ReadAllBytes(CN_KEY);
+                UA_OS = File.ReadAllBytes(OS_KEY);
+                UA_key = File.ReadAllBytes(GC_KEY);
             }
-            return pb2;
-        }
-
-        #endregion
-
-        public static byte[] ToUABytes(string key)
-        {
-            int count = key.Length + 2;
-            List<byte> uabytes = Encoding.UTF8.GetBytes(key).ToList();
-            for (int i = 1; i < 44; i++)
+            catch (Exception)
             {
-                if (i <= 29)
-                {
-                    byte[] k = GetBytesPb(29 - i);
-                    for (int j = 0; j < k.Length; j++)
-                    {
-                        uabytes.Insert(count - 8 * i, k[k.Length - 1 - j]);
-                    }
-                }
-                else
-                {
-                    byte[] k = GetBytesPa(14 - (i - 29));
-                    for (int j = 0; j < k.Length; j++)
-                    {
-                        uabytes.Insert(count - 8 * i, k[k.Length - 1 - j]);
-                    }
-                }
+
+                throw;
             }
-            return uabytes.ToArray();
+
         }
 
-
-        public const string dispatchKey_FILE_UA = @"key/dispatchKey_UA.txt";
-        public const string dispatchKey_FILE_UA_Old = @"key/dispatchKey_UA_Old.txt";
-        public static void Patch_Bytes(ref byte[] filebytes)
+        public void Patch(string ua_file)
         {
-            string dispatchKeyUA = File.ReadAllText(dispatchKey_FILE_UA);
-            string dispatchKeyUAOld = File.ReadAllText(dispatchKey_FILE_UA_Old);
+            try
+            {
 
-            filebytes =PatchHelper.ReplaceBytes(filebytes, ToUABytes(dispatchKeyUAOld), ToUABytes(dispatchKeyUA));
+                UA = File.ReadAllBytes(ua_file);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+            switch (gi.GetGameType())
+            {
+                case GameInfo.GameType.CN:
+                    PatchCN(ua_file);
+                    break;
+                case GameInfo.GameType.OS:
+                    PatchOS(ua_file);
+                    break;
+                //case GameInfo.GameType.UnKnown:
+                //    break;
+                default:
+                    throw new Exception("未知版本的客户端！");
+                    break;
+            }
+        }
+
+        public void PatchCN(string FilePath)
+        {
+
+            if (UA_CN.Length != UA_key.Length)
+            {
+                throw new Exception("key length doesn't match.");
+                //return;
+            }
+
+            int Offset = 0;
+            int DataLength;
+
             
 
+            List<HexReplaceEntity> UA_CN_list = new List<HexReplaceEntity>();
+            while ((DataLength = UA_CN.Length - Offset) > 0)
+            {
+                if (DataLength > 8)
+                    DataLength = 8;
+                HexReplaceEntity hexReplaceEntity = new HexReplaceEntity();
+                hexReplaceEntity.oldValue = new byte[8];
+                Buffer.BlockCopy(UA_CN, Offset, hexReplaceEntity.oldValue, 0, DataLength);
+                hexReplaceEntity.newValue = new byte[8];
+                Buffer.BlockCopy(UA_key, Offset, hexReplaceEntity.newValue, 0, DataLength);
+                UA_CN_list.Add(hexReplaceEntity);
+                Offset += DataLength;
+            }
+
+
+            byte[] UA_CN_patched = HexUtility.Replace(UA, UA_CN_list);
+
+            if (!HexUtility.EqualsBytes(UA, UA_CN_patched))
+            {
+                try
+                {
+                    File.WriteAllBytes(FilePath, UA_CN_patched);
+                }
+                catch (IOException e)
+                {
+                    throw;
+                }
+                return;
+            }
         }
-        public static void Patch_File(string inpath, string outpath)
+
+        public void PatchOS(string FilePath)
         {
-            byte[] data = File.ReadAllBytes(inpath);
-            Patch_Bytes(ref data);
-            FileStream stream = File.Create(outpath);
-            stream.Write(data, 0, data.Length);
-            stream.Close();
+
+
+            if (UA_OS.Length != UA_key.Length)
+            {
+                throw new Exception("key length doesn't match.");
+                //return;
+            }
+
+            int Offset = 0;
+            int DataLength;
+
+            List<HexReplaceEntity> UA_OS_list = new List<HexReplaceEntity>();
+            while ((DataLength = UA_OS.Length - Offset) > 0)
+            {
+                if (DataLength > 8)
+                    DataLength = 8;
+                HexReplaceEntity hexReplaceEntity = new HexReplaceEntity();
+                hexReplaceEntity.oldValue = new byte[8];
+                Buffer.BlockCopy(UA_OS, Offset, hexReplaceEntity.oldValue, 0, DataLength);
+                hexReplaceEntity.newValue = new byte[8];
+                Buffer.BlockCopy(UA_key, Offset, hexReplaceEntity.newValue, 0, DataLength);
+                UA_OS_list.Add(hexReplaceEntity);
+                Offset += DataLength;
+            }
+
+            byte[] UA_OS_patched = HexUtility.Replace(UA, UA_OS_list);
+
+            if (!HexUtility.EqualsBytes(UA, UA_OS_patched))
+            {
+                try
+                {
+                    File.WriteAllBytes(FilePath, UA_OS_patched);
+                }
+                catch (IOException e)
+                {
+                    throw;
+                }
+                return;
+            }
+
+
+            
         }
+
     }
 }

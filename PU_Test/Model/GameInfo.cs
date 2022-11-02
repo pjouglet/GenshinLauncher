@@ -4,10 +4,12 @@ namespace PU_Test.Model
 {
     internal class GameInfo
     {
-
+        string GameLauncherFolder { get; set; }
         public GameInfo(string gameExePath)
         {
             GameExePath = gameExePath;
+
+            GameLauncherFolder = Path.GetDirectoryName(gameExePath);
         }
 
         public enum GameType
@@ -20,11 +22,11 @@ namespace PU_Test.Model
         {
             GameType gameType = GameType.UnKnown;
 
-            if (File.Exists(Path.Combine(GameExePath, "YuanShen_Data")))
+            if (Directory.Exists(Path.Combine(GameLauncherFolder, "YuanShen_Data")))
             {
                 gameType = GameType.CN;
             }
-            else if (File.Exists(Path.Combine(GameExePath, "GenshinImpact_Data")))
+            else if (Directory.Exists(Path.Combine(GameLauncherFolder, "GenshinImpact_Data")))
             {
                 gameType = GameType.OS;
             }

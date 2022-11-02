@@ -61,25 +61,12 @@ namespace PU_Test.ViewModel
         private void RestorePatch()
         {
             var s = new PatchHelper(launcherConfig.GameInfo).GetPatchStatue();
-            if (s==PatchHelper.PatchType.None)
-            {
-            }
-            if (s == PatchHelper.PatchType.MetaData)
-            {
-                new PatchHelper(launcherConfig.GameInfo).UnPatchMetaData();
 
-            }
             if (s == PatchHelper.PatchType.UserAssemby)
             {
                 new PatchHelper(launcherConfig.GameInfo).UnPatchUserAssembly();
 
             }
-            ShowPatchStatue();
-        }
-        [RelayCommand]
-        private void PatchMeta()
-        {
-            new PatchHelper(launcherConfig.GameInfo).PatchMetaData();
             ShowPatchStatue();
         }
         [RelayCommand]
@@ -112,7 +99,7 @@ namespace PU_Test.ViewModel
             openFileDialog.Multiselect = false;
             if (openFileDialog.ShowDialog() == true)
             {
-                //此处做你想做的事 
+
                 launcherConfig.GameInfo = new GameInfo(openFileDialog.FileName);
 
             }

@@ -11,7 +11,9 @@
   <ItemGroup>
     <None Remove="key\dispatchKey_UA.txt" />
     <None Remove="key\dispatchKey_UA_Old.txt" />
-    <None Remove="MetadataConverterLib.dll" />
+    <None Remove="key\UA-CN.txt" />
+    <None Remove="key\UA-key.txt" />
+    <None Remove="key\UA-OS.txt" />
     <None Remove="Resources\1.jpg" />
     <None Remove="Resources\bg.png" />
     <None Remove="Resources\Icon\discord.svg" />
@@ -21,13 +23,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="key\dispatchKey_UA.txt">
+    <Content Include="key\UA-CN.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="key\dispatchKey_UA_Old.txt">
+    <Content Include="key\UA-key.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="MetadataConverterLib.dll">
+    <Content Include="key\UA-OS.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\1.jpg">
