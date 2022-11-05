@@ -139,6 +139,15 @@
                             Style="{DynamicResource SimpleCheckBox}">
                             仅启用代理
                         </CheckBox>
+                        <CheckBox
+                            Height="26"
+                            Margin="0,10"
+                            VerticalContentAlignment="Center"
+                            FontSize="16"
+                            IsChecked="{Binding LauncherConfig.ProxyConfig.UseHttp}"
+                            Style="{DynamicResource SimpleCheckBox}">
+                            使用http
+                        </CheckBox>
                         <StackPanel Margin="0,25,0,5" Orientation="Horizontal">
 
                             <TextBlock FontSize="20">

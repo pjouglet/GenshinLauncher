@@ -12,7 +12,7 @@ namespace PU_Test.Common
 {
     public static class ServerInfoGetter
     {
-
+        public static string scheme = "https";
 
         public static async Task<string> HttpGet(string url, Dictionary<string, string> dic = null)
         {
@@ -85,7 +85,7 @@ namespace PU_Test.Common
         public static async Task<ServerInfo> GetAsync(string ip)
         {
 
-            var Url = $"https://{ip}/status/server";
+            var Url = $"{scheme}://{ip}/status/server";
             Stopwatch sw = new Stopwatch();
             sw.Start();
 
@@ -108,8 +108,12 @@ namespace PU_Test.Common
             }
 
             var SI = new ServerInfo();
-            SI.players = dt.status.playerCount.ToString();
+            if (dt.status==null)
+            {
+                return new ServerInfo();
+            }
             SI.ver = dt.status.version;
+            SI.players = dt.status.playerCount.ToString();
             SI.timeout = sw.ElapsedMilliseconds.ToString();
 
 
@@ -122,7 +126,7 @@ namespace PU_Test.Common
         internal static async Task<List<AnnounceMentItem>> GetAnnounceAsync(string ip)
         {
 
-            var Url = $"https://{ip}/glannouncement/list";
+            var Url = $"{scheme}://{ip}/glannouncement/list";
             Stopwatch sw = new Stopwatch();
 
             var r = await HttpGet(url: Url);

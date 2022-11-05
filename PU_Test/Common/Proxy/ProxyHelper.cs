@@ -66,11 +66,13 @@ namespace PU_Test.Common.Proxy
             ExplicitProxyEndPoint explicitEndPoint;
             private string port;
             private string fakeHost;
+            private bool usehttp;
 
-            public ProxyController(string port, string host)
+            public ProxyController(string port, string host, bool usehttp=false)
             {
                 this.port = port;
                 this.fakeHost = host;
+                this.usehttp =  usehttp;
             }
 
             private bool IsRun;
@@ -184,6 +186,12 @@ namespace PU_Test.Common.Proxy
                 {
                     string oHost = e.WebSession.Request.RequestUri.Host;
                     e.HttpClient.Request.Url = e.HttpClient.Request.Url.Replace(oHost, fakeHost);
+                    if (usehttp)
+                    {
+                        e.HttpClient.Request.Url = e.HttpClient.Request.Url.Replace("https", "http");
+
+                    }
+
                 }
             }
 

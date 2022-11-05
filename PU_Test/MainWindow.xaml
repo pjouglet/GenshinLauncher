@@ -205,7 +205,7 @@
                 Height="64"
                 Background="#ffd325"
                 Command="{Binding StartGameCommand}"
-                Content="{Binding StartGameBtnText}"
+                Content="{Binding StartGameBtnText, FallbackValue=开始游戏}"
                 Cursor="Hand"
                 FontSize="24"
                 Foreground="#704a1d"

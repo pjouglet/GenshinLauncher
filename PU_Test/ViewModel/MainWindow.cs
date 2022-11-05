@@ -78,6 +78,7 @@ namespace PU_Test.ViewModel
         {
             Task.Run(async () =>
             {
+                ServerInfoGetter.scheme = launcherConfig.ProxyConfig.UseHttp ? "http" : "https";
                 ServerInfo = await ServerInfoGetter.GetAsync(launcherConfig.ProxyConfig.ProxyServer);
                 AnnounceMents = await ServerInfoGetter.GetAnnounceAsync(launcherConfig.ProxyConfig.ProxyServer);
 
@@ -124,7 +125,7 @@ namespace PU_Test.ViewModel
             {
                 if (proxyController == null)
                 {
-                    proxyController = new ProxyHelper.ProxyController(host: launcherConfig.ProxyConfig.ProxyServer, port: launcherConfig.ProxyConfig.ProxyPort);
+                    proxyController = new ProxyHelper.ProxyController(host: launcherConfig.ProxyConfig.ProxyServer, port: launcherConfig.ProxyConfig.ProxyPort,usehttp:launcherConfig.ProxyConfig.UseHttp);
                     proxyController.Start();
                     StartGameBtnText = "关闭代理";
                     return;
@@ -141,7 +142,6 @@ namespace PU_Test.ViewModel
                 {
                     proxyController.Start();
                     StartGameBtnText = "关闭代理";
-
 
                 }
                 return;
@@ -164,7 +164,11 @@ namespace PU_Test.ViewModel
                 }
                 IsGameRunning = true;
 
-                proxyController = new ProxyHelper.ProxyController(host: launcherConfig.ProxyConfig.ProxyServer, port: launcherConfig.ProxyConfig.ProxyPort);
+                proxyController = new ProxyHelper.ProxyController(
+                    host: launcherConfig.ProxyConfig.ProxyServer, 
+                    port: launcherConfig.ProxyConfig.ProxyPort,
+                    usehttp : launcherConfig.ProxyConfig.UseHttp
+                    );
                 proxyController.Start();
                 StartGameBtnText = "关闭代理";
 

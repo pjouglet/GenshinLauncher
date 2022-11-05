@@ -12,5 +12,6 @@ namespace PU_Test.Model
 
         [ObservableProperty]
         private bool proxyOnly;
+
     }
 }
