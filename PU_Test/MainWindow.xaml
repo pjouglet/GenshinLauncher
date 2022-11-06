@@ -8,7 +8,7 @@
     xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
     xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
     xmlns:vm="clr-namespace:PU_Test.ViewModel"
-    Title="MainWindow"
+    Title="GILauncher"
     MinWidth="1300"
     MinHeight="750"
     d:DataContext="{d:DesignInstance Type=vm:MainWindow}"
