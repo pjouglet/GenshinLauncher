@@ -198,5 +198,42 @@ namespace PU_Test.ViewModel
             MessageBox.Show("请设定游戏路径！");
             return false;
         }
+
+
+
+
+
+
+
+
+
+        public void Official_Set()
+        {
+            new PatchHelper(launcherConfig.GameInfo).UnPatchUserAssembly();
+            //MessageBox.Show("暂不支持！");
+            ShowPatchStatue();
+        }
+
+        public void Private_Set()
+        {
+            new PatchHelper(launcherConfig.GameInfo).PatchUserAssembly();
+            //MessageBox.Show("暂不支持！");
+            ShowPatchStatue();
+        }
+
+
+        //public void ShowPatchStatue()
+        //{
+        //    string PatchStatueStr = "";
+        //    switch (new PatchHelper(launcherConfig.GameInfo).GetPatchStatue())
+        //    {
+        //        case PatchHelper.PatchType.None: PatchStatueStr = "官方"; break;
+        //        case PatchHelper.PatchType.All: PatchStatueStr = "已打补丁-ALL"; break;
+        //        case PatchHelper.PatchType.MetaData: PatchStatueStr = "已打补丁-Meta"; break;
+        //        case PatchHelper.PatchType.UserAssemby: PatchStatueStr = "已打补丁-UA"; break;
+        //    }
+        //    GlobalValues.mainWindow.vm.PatchStatueStr = PatchStatueStr;
+
+        //}
     }
 }

@@ -13,6 +13,7 @@
     MinHeight="750"
     d:DataContext="{d:DesignInstance Type=vm:MainWindow}"
     Loaded="Window_Loaded"
+    ResizeMode="NoResize"
     mc:Ignorable="d">
     <Window.Background>
         <ImageBrush ImageSource="Resources/bg.png" />
@@ -198,18 +199,59 @@
                 </StackPanel>
             </Border>
 
-            <Button
+            <StackPanel
                 Canvas.Right="120"
                 Canvas.Bottom="40"
-                Width="240"
-                Height="64"
-                Background="#ffd325"
-                Command="{Binding StartGameCommand}"
-                Content="{Binding StartGameBtnText, FallbackValue=开始游戏}"
-                Cursor="Hand"
-                FontSize="24"
-                Foreground="#704a1d"
-                Style="{DynamicResource StartGameButton}" />
+                HorizontalAlignment="Right"
+                Orientation="Horizontal">
+
+                <Button
+                    Width="200"
+                    Height="64"
+                    Background="#ffd325"
+                    Command="{Binding StartGameCommand}"
+                    Content="{Binding StartGameBtnText, FallbackValue=开始游戏}"
+                    Cursor="Hand"
+                    FontSize="24"
+                    Foreground="#704a1d"
+                    Style="{DynamicResource StartGameButton}" />
+                <ToggleButton
+                    Name="tb"
+                    Width="32"
+                    Background="#ffd325"
+                    BorderBrush="#cca81d"
+                    BorderThickness="1,0,0,0"
+                    Content="&#xe700;"
+                    FontFamily="Segoe Fluent Icons"
+                    FontWeight="Bold"
+                    Style="{DynamicResource ToggleButtonStyle1}" />
+
+                <Popup
+                    AllowsTransparency="True"
+                    HorizontalOffset="100"
+                    IsOpen="{Binding ElementName=tb, Path=IsChecked}"
+                    Placement="Top"
+                    StaysOpen="False"
+                    VerticalOffset="-8">
+                    <Border
+                        Padding="5"
+                        Background="White"
+                        CornerRadius="8">
+
+                        <StackPanel>
+                            <MenuItem
+                                Click="Official_Sel"
+                                FontWeight="Bold"
+                                Header="OFFICIAL" />
+                            <MenuItem
+                                Click="Private_Sel"
+                                FontWeight="Bold"
+                                Header="PRIVATE" />
+                        </StackPanel>
+                    </Border>
+                </Popup>
+            </StackPanel>
+
         </Canvas>
 
         <Frame

@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿using PU_Test.Common.Patch;
+using PU_Test.Model;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 
@@ -57,5 +59,18 @@ namespace PU_Test
         {
             vm.UpdateSI();
         }
+
+        private void Official_Sel(object sender, RoutedEventArgs e)
+        {
+            vm.Official_Set();
+
+        }
+
+        private void Private_Sel(object sender, RoutedEventArgs e)
+        {
+            vm.Private_Set();
+        }
+
+
     }
 }
