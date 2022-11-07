@@ -228,7 +228,7 @@
 
                 <Popup
                     AllowsTransparency="True"
-                    HorizontalOffset="100"
+                    HorizontalOffset="80"
                     IsOpen="{Binding ElementName=tb, Path=IsChecked}"
                     Placement="Top"
                     StaysOpen="False"
