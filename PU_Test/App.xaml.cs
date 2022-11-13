@@ -10,6 +10,7 @@ namespace PU_Test
     /// </summary>
     public partial class App : Application
     {
+        System.Threading.Mutex mutex;
         protected override void OnStartup(StartupEventArgs e)
         {
             ServicePointManager.ServerCertificateValidationCallback += (s, cert, chain, sslPolicyErrors) => true;
@@ -18,6 +19,18 @@ namespace PU_Test
             AppDomain currentDomain = AppDomain.CurrentDomain;
             // 当前作用域出现未捕获异常时，使用MyHandler函数响应事件
             currentDomain.UnhandledException += new UnhandledExceptionEventHandler(MyHandler);
+
+
+            //单例
+            bool ret;
+            mutex = new System.Threading.Mutex(true, "ElectronicNeedleTherapySystem", out ret);
+
+            if (!ret)
+            {
+                MessageBox.Show("已有一个程序实例运行");
+                Environment.Exit(0);
+            }
+
 
             base.OnStartup(e);
         }
