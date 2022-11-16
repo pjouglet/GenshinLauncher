@@ -12,29 +12,26 @@ namespace PU_Test.Common.Game
 
         public static void StartGame(string filePath)
         {
-            if (File.Exists(filePath))
+            if (!File.Exists(filePath))
             {
-                ProcessStartInfo startInfo = new ProcessStartInfo()
-                {
-                    CreateNoWindow = true,
-                    FileName = filePath,
-                    UseShellExecute = true,
-                };
-                try
-                {
-                    Process.Start(startInfo);
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                //Start("cmd.exe",$"/c \"{filePath}\"");
-            }
-            else
-            {
-                //Debug.Print("找不到启动目标文件！");
                 MessageBox.Show("找不到启动目标文件");
+                return;
+            }
+
+            ProcessStartInfo startInfo = new ProcessStartInfo()
+            {
+                CreateNoWindow = true,
+                FileName = filePath,
+                UseShellExecute = true,
+            };
+            try
+            {
+                Process.Start(startInfo);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 

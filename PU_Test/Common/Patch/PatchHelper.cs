@@ -94,50 +94,37 @@ namespace PU_Test.Common.Patch
 
             string official = string.Empty;
             string backup = string.Empty;
-            if (File.Exists(FILE_NAME))
+
+            if(!File.Exists(FILE_NAME))
+                throw new Exception("找不到pkg_version文件！");
+
+            if (FILE_NAME.Contains(METADATA_FILE_NAME))
             {
-                if (FILE_NAME.Contains(METADATA_FILE_NAME))
-                {
 
-                    official = GetHashFromPkgVer("Managed/Metadata/global-metadata.dat");
-                }
-                else
-                {
-                    official = GetHashFromPkgVer($"Native/{UA_FILE_NAME}");
-
-                }
-
-                string currentMd5 = GetHashFromFile(Path.Combine(FILE_NAME));
-
-                if (File.Exists(Path.Combine(FILE_NAME + ".bak")))
-                {
-                    backup = GetHashFromFile(Path.Combine(FILE_NAME + ".bak"));
-
-                }
-
-                //官方与备份相同，不用备份
-                if (official == backup)
-                {
-                    return;
-                }
-                //官方与现存相同
-                if (official == currentMd5)
-                {
-                    //备份
-                    File.Copy(FILE_NAME, FILE_NAME + ".bak");
-
-
-                }
-                else
-                {
-                    throw new Exception("补丁目标不正确：不是官方文件！");
-
-                }
+                official = GetHashFromPkgVer("Managed/Metadata/global-metadata.dat");
             }
             else
             {
-                throw new Exception("找不到pkg_version文件！");
+                official = GetHashFromPkgVer($"Native/{UA_FILE_NAME}");
+
             }
+
+            string currentMd5 = GetHashFromFile(Path.Combine(FILE_NAME));
+
+            if (File.Exists(Path.Combine(FILE_NAME + ".bak")))
+            {
+                backup = GetHashFromFile(Path.Combine(FILE_NAME + ".bak"));
+
+            }
+
+            //官方与备份相同，不用备份
+            if (official == backup)
+                return;
+
+            if (official != currentMd5)
+                throw new Exception("补丁目标不正确：不是官方文件！");
+
+            File.Copy(FILE_NAME, FILE_NAME + ".bak");
         }
 
         public void RestoreFile(string FILE_NAME)
@@ -145,36 +132,34 @@ namespace PU_Test.Common.Patch
             string official = string.Empty;
             string backup = string.Empty;
 
-            if (File.Exists(FILE_NAME + ".bak"))
+            if (!File.Exists(FILE_NAME + ".bak"))
+            {
+                MessageBox.Show("未找到备份文件！");
+                return;
+            }
+
+
+            backup = GetHashFromFile(Path.Combine(FILE_NAME + ".bak"));
+
+            if (FILE_NAME.Contains(METADATA_FILE_NAME))
             {
 
-                backup = GetHashFromFile(Path.Combine(FILE_NAME + ".bak"));
-
-                if (FILE_NAME.Contains(METADATA_FILE_NAME))
-                {
-
-                    official = GetHashFromPkgVer("Managed/Metadata/global-metadata.dat");
-                }
-                else
-                {
-                    official = GetHashFromPkgVer($"Native/{UA_FILE_NAME}");
-
-                }
-
-                if (official != backup)
-                {
-                    MessageBox.Show("备份文件不是官方文件，恢复失败！");
-
-                    return;
-                }
-
-                File.Copy(FILE_NAME + ".bak", FILE_NAME, true);
-                MessageBox.Show("成功恢复了备份文件！");
+                official = GetHashFromPkgVer("Managed/Metadata/global-metadata.dat");
             }
             else
             {
-                MessageBox.Show("未找到备份文件！");
+                official = GetHashFromPkgVer($"Native/{UA_FILE_NAME}");
+
             }
+
+            if (official != backup)
+            {
+                MessageBox.Show("备份文件不是官方文件，恢复失败！");
+                return;
+            }
+
+            File.Copy(FILE_NAME + ".bak", FILE_NAME, true);
+            MessageBox.Show("Successfully restored backup！");
         }
 
 
@@ -254,8 +239,6 @@ namespace PU_Test.Common.Patch
         {
             var file_path = GetUAPatchDir();
             RestoreFile(Path.Combine(file_path, UA_FILE_NAME));
-
-
         }
     }
 }
