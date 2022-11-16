@@ -8,6 +8,7 @@
     xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
     xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
     xmlns:vm="clr-namespace:PU_Test.ViewModel"
+    xmlns:resources="clr-namespace:Launcher.Resources"
     Title="GILauncher"
     MinWidth="1300"
     MinHeight="750"
@@ -34,7 +35,7 @@
                 VerticalAlignment="Center"
                 FontSize="14"
                 Foreground="White">
-                <Run Text="原神" />
+                <Run Text="{x:Static resources:Strings.MAIN_WINDOW_GAME_NAME }" />
                 <Run
                     FontWeight="Light"
                     Foreground="Gray"
@@ -116,9 +117,9 @@
                         </Style>
                     </TabControl.Resources>
                     <TabItem
-                        Header="状态"
+                        Header="{x:Static resources:Strings.MAIN_WINDOW_STATUS }"
                         Style="{DynamicResource TabItemStyle1}"
-                        ToolTip="点击刷新">
+                        ToolTip="{x:Static resources:Strings.MAIN_WINDOW_STATUS_TOOLTIP }">
                         <StackPanel Margin="10" MouseLeftButtonDown="RefreshServerInfo">
                             <!--<TextBlock HorizontalAlignment="Center" Text="ServerInfo" />-->
                             <TextBlock LineHeight="32">
@@ -126,16 +127,16 @@
                                 <Run Text="{Binding ServerInfo.timeout}" />
                                 <Run Text="ms" />
                                 <LineBreak />
-                                <Run Text="[在线]:" />
+                                <Run Text="{x:Static resources:Strings.MAIN_WINDOW_ONLINE }" />
                                 <Run Text="{Binding ServerInfo.players}" />
                                 <LineBreak />
 
-                                <Run Text="[版本]:" />
+                                <Run Text="{x:Static resources:Strings.MAIN_WINDOW_VERSION }" />
                                 <Run Text="{Binding ServerInfo.ver}" />
                             </TextBlock>
                         </StackPanel>
                     </TabItem>
-                    <TabItem Header="公告" Style="{DynamicResource TabItemStyle1}">
+                    <TabItem Header="{x:Static resources:Strings.MAIN_WINDOW_NOTICES }" Style="{DynamicResource TabItemStyle1}">
                         <ItemsControl ItemsSource="{Binding AnnounceMents}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
@@ -207,7 +208,7 @@
                     Height="64"
                     Background="#ffd325"
                     Command="{Binding StartGameCommand}"
-                    Content="{Binding StartGameBtnText, FallbackValue=开始游戏}"
+                    Content="{Binding StartGameBtnText, FallbackValue={x:Static resources:Strings.LAUNCH}}"
                     Cursor="Hand"
                     FontSize="24"
                     Foreground="#704a1d"
@@ -239,11 +240,11 @@
                             <MenuItem
                                 Click="Official_Sel"
                                 FontWeight="Bold"
-                                Header="OFFICIAL" />
+                                Header="{x:Static resources:Strings.SERVER_OFFICIAL}" />
                             <MenuItem
                                 Click="Private_Sel"
                                 FontWeight="Bold"
-                                Header="PRIVATE" />
+                                Header="{x:Static resources:Strings.SERVER_PRIVATE}" />
                         </StackPanel>
                     </Border>
                 </Popup>

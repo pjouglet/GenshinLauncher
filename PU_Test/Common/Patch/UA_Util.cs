@@ -1,13 +1,7 @@
-﻿using CommunityToolkit.Mvvm.DependencyInjection;
-using PU_Test.Common.Patch;
-using PU_Test.Model;
+﻿using PU_Test.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Channels;
-using System.Threading.Tasks;
 using static Launcher.Common.Patch.HexUtility;
 
 namespace Launcher.Common.Patch
@@ -131,7 +125,7 @@ namespace Launcher.Common.Patch
                 //case GameInfo.GameType.UnKnown:
                 //    break;
                 default:
-                    throw new Exception("未知版本的客户端！");
+                    throw new Exception(Resources.Strings.UNKNOWN_CLIENT_VERSION);
                     break;
             }
         }
@@ -141,8 +135,7 @@ namespace Launcher.Common.Patch
 
             if (UA_CN.Length != UA_key.Length)
             {
-                throw new Exception("key length doesn't match.");
-                //return;
+                throw new Exception(Resources.Strings.KEY_LENGTH_NO_MATCH);
             }
 
             int Offset = 0;
@@ -187,8 +180,7 @@ namespace Launcher.Common.Patch
 
             if (UA_OS.Length != UA_key.Length)
             {
-                throw new Exception("key length doesn't match.");
-                //return;
+                throw new Exception(Resources.Strings.KEY_LENGTH_NO_MATCH);
             }
 
             int Offset = 0;

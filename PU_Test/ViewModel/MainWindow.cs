@@ -1,5 +1,4 @@
-﻿
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Launcher.Model;
 using Newtonsoft.Json;
@@ -89,11 +88,11 @@ namespace PU_Test.ViewModel
         {
             switch (new PatchHelper(launcherConfig.GameInfo).GetPatchStatue())
             {
-                case PatchHelper.PatchType.None: PatchStatueStr = "官方"; break;
-                case PatchHelper.PatchType.All: PatchStatueStr = "已打补丁-ALL"; break;
-                case PatchHelper.PatchType.MetaData: PatchStatueStr = "已打补丁-Meta"; break;
-                case PatchHelper.PatchType.UserAssemby: PatchStatueStr = "已打补丁-UA"; break;
-                case PatchHelper.PatchType.Unknown: PatchStatueStr = "未知"; break;
+                case PatchHelper.PatchType.None: PatchStatueStr = Launcher.Resources.Strings.PATCH_OFFICIAL; break;
+                case PatchHelper.PatchType.All: PatchStatueStr = Launcher.Resources.Strings.PATCH_PATCHED_ALL; break;
+                case PatchHelper.PatchType.MetaData: PatchStatueStr = Launcher.Resources.Strings.PATCH_PATCHED_META; break;
+                case PatchHelper.PatchType.UserAssemby: PatchStatueStr = Launcher.Resources.Strings.PATCH_PATCHED_UA; break;
+                case PatchHelper.PatchType.Unknown: PatchStatueStr = Launcher.Resources.Strings.UNKNOWN; break;
             }
         }
         public void SaveConfig()
@@ -106,10 +105,10 @@ namespace PU_Test.ViewModel
         private LauncherConfig launcherConfig;
 
         [ObservableProperty]
-        private string startGameBtnText = "开始游戏";
+        private string startGameBtnText = Launcher.Resources.Strings.LAUNCH;
 
         [ObservableProperty]
-        private string patchStatueStr = "未知";
+        private string patchStatueStr = Launcher.Resources.Strings.UNKNOWN;
 
         [ObservableProperty]
         private ServerInfo serverInfo = new ServerInfo();
@@ -121,27 +120,27 @@ namespace PU_Test.ViewModel
         {
 
 
-            if (launcherConfig.ProxyOnly == true)
+            if (launcherConfig.ProxyOnly)
             {
                 if (proxyController == null)
                 {
                     proxyController = new ProxyHelper.ProxyController(host: launcherConfig.ProxyConfig.ProxyServer, port: launcherConfig.ProxyConfig.ProxyPort,usehttp:launcherConfig.ProxyConfig.UseHttp);
                     proxyController.Start();
-                    StartGameBtnText = "关闭代理";
+                    StartGameBtnText = Launcher.Resources.Strings.STOP_PROXY;
                     return;
 
                 }
-                if (proxyController._IsRun == true)
+                if (proxyController._IsRun)
                 {
                     proxyController.Stop();
                     proxyController = null;
-                    StartGameBtnText = "开始游戏";
+                    StartGameBtnText = Launcher.Resources.Strings.LAUNCH;
 
                 }
                 else
                 {
                     proxyController.Start();
-                    StartGameBtnText = "关闭代理";
+                    StartGameBtnText = Launcher.Resources.Strings.STOP_PROXY;
 
                 }
                 return;
@@ -159,7 +158,7 @@ namespace PU_Test.ViewModel
 
                 if (!CheckGameCfg())
                 {
-                    MessageBox.Show("配置项不正确！");
+                    MessageBox.Show(Launcher.Resources.Strings.CONFIGURATION_ERROR);
                     return;
                 }
                 IsGameRunning = true;
@@ -170,7 +169,7 @@ namespace PU_Test.ViewModel
                     usehttp : launcherConfig.ProxyConfig.UseHttp
                     );
                 proxyController.Start();
-                StartGameBtnText = "关闭代理";
+                StartGameBtnText = Launcher.Resources.Strings.STOP_PROXY;
 
                 GameHelper.StartGame(launcherConfig.GameInfo.GameExePath);
 
@@ -184,7 +183,7 @@ namespace PU_Test.ViewModel
                     proxyController.Stop();
                 }
                 proxyController = null;
-                StartGameBtnText = "开始游戏";
+                StartGameBtnText = Launcher.Resources.Strings.LAUNCH;
                 IsGameRunning = false;
             }
 
@@ -195,17 +194,9 @@ namespace PU_Test.ViewModel
             {
                 return true;
             }
-            MessageBox.Show("请设定游戏路径！");
+            MessageBox.Show(Launcher.Resources.Strings.GAME_PATH_NOT_SET);
             return false;
         }
-
-
-
-
-
-
-
-
 
         public void Official_Set()
         {
@@ -220,7 +211,6 @@ namespace PU_Test.ViewModel
             //MessageBox.Show("暂不支持！");
             ShowPatchStatue();
         }
-
 
         //public void ShowPatchStatue()
         //{

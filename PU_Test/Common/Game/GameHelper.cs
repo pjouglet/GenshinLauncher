@@ -14,7 +14,7 @@ namespace PU_Test.Common.Game
         {
             if (!File.Exists(filePath))
             {
-                MessageBox.Show("找不到启动目标文件");
+                MessageBox.Show(Launcher.Resources.Strings.BOOT_TARGET_FILE_NOT_FOUND);
                 return;
             }
 
@@ -90,8 +90,6 @@ namespace PU_Test.Common.Game
                     try
                     {
                         launcherpath = key.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\原神").GetValue("InstallPath").ToString();
-
-
                     }
                     catch (Exception)
                     {
@@ -115,27 +113,16 @@ namespace PU_Test.Common.Game
 
                 var gamepath = GameRegReader.GetGamePath();
                 if (gamepath == null)
-                {
                     return null;
-                }
                 var cnpath = gamepath + @"/YuanShen.exe";
                 var ospath = gamepath + @"/GenshinImpact.exe";
 
                 if (File.Exists(cnpath))
-                {
                     return cnpath;
-                }
-                else if (File.Exists(ospath))
-                {
+                if (File.Exists(ospath))
                     return ospath;
-                }
-                else
-                {
-                    return null;
-                }
+                return null;
             }
-
-
         }
     }
 }

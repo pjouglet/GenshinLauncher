@@ -83,7 +83,7 @@ namespace PU_Test.Common.Patch
             }
             catch (Exception ex)
             {
-                throw new Exception("GetMD5HashFromFile() fail,error:" + ex.Message);
+                throw new Exception($"{Launcher.Resources.Strings.MD5_HASH_ERROR}: {ex.Message}");
             }
 
         }
@@ -96,7 +96,7 @@ namespace PU_Test.Common.Patch
             string backup = string.Empty;
 
             if(!File.Exists(FILE_NAME))
-                throw new Exception("找不到pkg_version文件！");
+                throw new Exception(Launcher.Resources.Strings.PKG_VERSION_NOT_FOUND);
 
             if (FILE_NAME.Contains(METADATA_FILE_NAME))
             {
@@ -122,7 +122,7 @@ namespace PU_Test.Common.Patch
                 return;
 
             if (official != currentMd5)
-                throw new Exception("补丁目标不正确：不是官方文件！");
+                throw new Exception(Launcher.Resources.Strings.INCORRECT_PATCH_TARGET);
 
             File.Copy(FILE_NAME, FILE_NAME + ".bak");
         }
@@ -134,7 +134,7 @@ namespace PU_Test.Common.Patch
 
             if (!File.Exists(FILE_NAME + ".bak"))
             {
-                MessageBox.Show("未找到备份文件！");
+                MessageBox.Show(Launcher.Resources.Strings.NO_BACKUP_FOUND);
                 return;
             }
 
@@ -154,12 +154,12 @@ namespace PU_Test.Common.Patch
 
             if (official != backup)
             {
-                MessageBox.Show("备份文件不是官方文件，恢复失败！");
+                MessageBox.Show(Launcher.Resources.Strings.RESTORE_FAILED_NOT_OFFICIAL);
                 return;
             }
 
             File.Copy(FILE_NAME + ".bak", FILE_NAME, true);
-            MessageBox.Show("Successfully restored backup！");
+            MessageBox.Show(Launcher.Resources.Strings.RESTORE_SUCCESS);
         }
 
 
@@ -228,11 +228,11 @@ namespace PU_Test.Common.Patch
             }
             catch (Exception ex)
             {
-                MessageBox.Show("补丁失败"+ex);
+                MessageBox.Show($"{Launcher.Resources.Strings.FAILED}: {ex}");
                 return;
             }
 
-            MessageBox.Show("成功补丁了 UserAssembly.dll!");
+            MessageBox.Show(Launcher.Resources.Strings.USERASSEMBLY_PATCH_SUCCESS);
         }
 
         internal void UnPatchUserAssembly()

@@ -17,7 +17,7 @@ namespace PU_Test.ViewModel
         private LauncherConfig launcherConfig;
 
         [ObservableProperty]
-        private string patchStatueStr = "未知";
+        private string patchStatueStr = Launcher.Resources.Strings.UNKNOWN;
 
 
         public SettingPage()
@@ -42,10 +42,10 @@ namespace PU_Test.ViewModel
 
             switch (new PatchHelper(launcherConfig.GameInfo).GetPatchStatue())
             {
-                case PatchHelper.PatchType.None: PatchStatueStr = "官方"; break;
-                case PatchHelper.PatchType.All: PatchStatueStr = "已打补丁-ALL"; break;
-                case PatchHelper.PatchType.MetaData: PatchStatueStr = "已打补丁-Meta"; break;
-                case PatchHelper.PatchType.UserAssemby: PatchStatueStr = "已打补丁-UA"; break;
+                case PatchHelper.PatchType.None: PatchStatueStr = Launcher.Resources.Strings.PATCH_OFFICIAL; break;
+                case PatchHelper.PatchType.All: PatchStatueStr = Launcher.Resources.Strings.PATCH_PATCHED_ALL; break;
+                case PatchHelper.PatchType.MetaData: PatchStatueStr = Launcher.Resources.Strings.PATCH_PATCHED_META; break;
+                case PatchHelper.PatchType.UserAssemby: PatchStatueStr = Launcher.Resources.Strings.PATCH_PATCHED_UA; break;
             }
             GlobalValues.mainWindow.vm.PatchStatueStr = PatchStatueStr;
 
