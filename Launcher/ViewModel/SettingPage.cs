@@ -47,14 +47,14 @@ namespace Launcher.ViewModel
                 case PatchHelper.PatchType.MetaData: PatchStatueStr = Launcher.Resources.Strings.PATCH_PATCHED_META; break;
                 case PatchHelper.PatchType.UserAssemby: PatchStatueStr = Launcher.Resources.Strings.PATCH_PATCHED_UA; break;
             }
-            GlobalValues.mainWindow.vm.PatchStatueStr = PatchStatueStr;
+            GlobalValues.MainWindow.vm.PatchStatueStr = PatchStatueStr;
 
         }
         [RelayCommand]
         private void SaveConfig()
         {
-            GlobalValues.mainWindow.vm.LauncherConfig = launcherConfig;
-            GlobalValues.mainWindow.vm.SaveConfig();
+            GlobalValues.MainWindow.vm.LauncherConfig = launcherConfig;
+            GlobalValues.MainWindow.vm.SaveConfig();
             GlobalValues.frame.Visibility = Visibility.Collapsed;
         }
         [RelayCommand]

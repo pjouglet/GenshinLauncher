@@ -11,9 +11,9 @@ namespace Launcher.Common
 {
     public static class ServerInfoGetter
     {
-        public static string scheme = "https";
+        public static string Scheme = "https";
 
-        public static async Task<string> HttpGet(string url, Dictionary<string, string> dic = null)
+        public static async Task<string?> HttpGet(string url, Dictionary<string, string> dic)
         {
             HttpResponseMessage response;
             HttpClientHandler handler = new HttpClientHandler();
@@ -21,20 +21,16 @@ namespace Launcher.Common
             #region 参数添加
             StringBuilder builder = new StringBuilder();
             builder.Append(url);
-            if (dic != null)
+            if (dic.Count > 0)
             {
-
-                if (dic.Count > 0)
+                builder.Append("?");
+                int i = 0;
+                foreach (var item in dic)
                 {
-                    builder.Append("?");
-                    int i = 0;
-                    foreach (var item in dic)
-                    {
-                        if (i > 0)
-                            builder.Append("&");
-                        builder.AppendFormat("{0}={1}", item.Key, item.Value);
-                        i++;
-                    }
+                    if (i > 0)
+                        builder.Append("&");
+                    builder.AppendFormat("{0}={1}", item.Key, item.Value);
+                    i++;
                 }
             }
             #endregion
@@ -43,7 +39,7 @@ namespace Launcher.Common
 
                 response = await new HttpClient(handler).GetAsync(new Uri(builder.ToString()));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
@@ -52,30 +48,20 @@ namespace Launcher.Common
             return result;
         }
 
-        class REPDT
+        class Repdt
         {
             public class Status
             {
-                /// <summary>
-                /// 
-                /// </summary>
-                public int playerCount { get; set; }
-                /// <summary>
-                /// 
-                /// </summary>
-                public string version { get; set; }
+                public int PlayerCount { get; set; } = 0;
+
+                public string Version { get; set; } = string.Empty;
             }
 
             public class Root
             {
-                /// <summary>
-                /// 
-                /// </summary>
-                public int retcode { get; set; }
-                /// <summary>
-                /// 
-                /// </summary>
-                public Status status { get; set; }
+                public int Retcode { get; set; }
+
+                public Status? Status { get; set; }
             }
 
         }
@@ -84,39 +70,39 @@ namespace Launcher.Common
         public static async Task<ServerInfo> GetAsync(string ip)
         {
 
-            var Url = $"{scheme}://{ip}/status/server";
+            var url = $"{Scheme}://{ip}/status/server";
             Stopwatch sw = new Stopwatch();
             sw.Start();
 
-            var r = await HttpGet(url: Url);
+            var r = await HttpGet(url, new Dictionary<string, string>());
+            if(r is null)
+                return new ServerInfo();
 
             sw.Stop();
-            REPDT.Root dt;
+            Repdt.Root? dt;
             try
             {
-                dt = JsonConvert.DeserializeObject<REPDT.Root>(r);
-                if (dt == null)
-                {
+                dt = JsonConvert.DeserializeObject<Repdt.Root>(r);
+                if (dt is null)
                     return new ServerInfo();
-                }
 
             }
             catch
             {
-                dt = new REPDT.Root();
+                dt = new Repdt.Root();
             }
 
-            var SI = new ServerInfo();
-            if (dt.status == null)
+            ServerInfo serverInfo = new ServerInfo();
+            if (dt.Status == null)
             {
                 return new ServerInfo();
             }
-            SI.ver = dt.status.version;
-            SI.players = dt.status.playerCount.ToString();
-            SI.timeout = sw.ElapsedMilliseconds.ToString();
+            serverInfo.ver = dt.Status.Version;
+            serverInfo.players = dt.Status.PlayerCount.ToString();
+            serverInfo.timeout = sw.ElapsedMilliseconds.ToString();
 
 
-            return SI;
+            return serverInfo;
 
 
 
@@ -124,31 +110,22 @@ namespace Launcher.Common
 
         internal static async Task<List<AnnounceMentItem>> GetAnnounceAsync(string ip)
         {
+            var url = $"{Scheme}://{ip}/glannouncement/list";
+            var r = await HttpGet(url, new Dictionary<string, string>());
+            if (r is null)
+                return new List<AnnounceMentItem>();
 
-            var Url = $"{scheme}://{ip}/glannouncement/list";
-            Stopwatch sw = new Stopwatch();
-
-            var r = await HttpGet(url: Url);
-
-            List<AnnounceMentItem> ret;
+            List<AnnounceMentItem>? ret;
             try
             {
                 ret = JsonConvert.DeserializeObject<List<AnnounceMentItem>>(r);
-
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 ret = new List<AnnounceMentItem>();
             }
 
-
-            return ret;
-
-
-
+            return ret ?? new List<AnnounceMentItem>();
         }
-
-
     }
-
 }

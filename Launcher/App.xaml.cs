@@ -48,8 +48,8 @@ namespace Launcher
         protected override void OnExit(ExitEventArgs e)
         {
 
-            if (GlobalValues.mainWindow.vm.proxyController != null)
-                GlobalValues.mainWindow.vm.proxyController.Stop();
+            if (GlobalValues.MainWindow.vm.proxyController != null)
+                GlobalValues.MainWindow.vm.proxyController.Stop();
 
             base.OnExit(e);
         }

@@ -162,29 +162,19 @@ namespace Launcher.Common.Proxy
 
             private async Task OnBeforeTunnelConnectRequest(object sender, TunnelConnectSessionEventArgs e)
             {
-                string hostname = e.WebSession.Request.RequestUri.Host;
-                if (hostname.EndsWith(".yuanshen.com") |
-                   hostname.EndsWith(".hoyoverse.com") |
-                   hostname.EndsWith(".mihoyo.com") | hostname.EndsWith(fakeHost))
-                {
+                string hostname = e.HttpClient.Request.RequestUri.Host;
+                e.DecryptSsl = false;
+                if (hostname.EndsWith(".yuanshen.com") || hostname.EndsWith(".hoyoverse.com") || hostname.EndsWith(".mihoyo.com") || hostname.EndsWith(fakeHost))
                     e.DecryptSsl = true;
-                }
-                else
-                {
-
-                    e.DecryptSsl = false;
-                }
             }
 
 
             private async Task OnRequest(object sender, SessionEventArgs e)
             {
-                string hostname = e.WebSession.Request.RequestUri.Host;
-                if (hostname.EndsWith(".yuanshen.com") |
-                   hostname.EndsWith(".hoyoverse.com") |
-                   hostname.EndsWith(".mihoyo.com"))
+                string hostname = e.HttpClient.Request.RequestUri.Host;
+                if (hostname.EndsWith(".yuanshen.com") || hostname.EndsWith(".hoyoverse.com") || hostname.EndsWith(".mihoyo.com"))
                 {
-                    string oHost = e.WebSession.Request.RequestUri.Host;
+                    string oHost = e.HttpClient.Request.RequestUri.Host;
                     e.HttpClient.Request.Url = e.HttpClient.Request.Url.Replace(oHost, fakeHost);
                     if (usehttp)
                     {

@@ -13,7 +13,7 @@ namespace Launcher
         public MainWindow()
         {
             InitializeComponent();
-            GlobalValues.mainWindow = this;
+            GlobalValues.MainWindow = this;
             vm = new ViewModel.MainWindow();
             DataContext = vm;
             GlobalValues.frame = dialog_frame;

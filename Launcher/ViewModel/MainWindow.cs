@@ -76,7 +76,7 @@ namespace Launcher.ViewModel
         {
             Task.Run(async () =>
             {
-                ServerInfoGetter.scheme = launcherConfig.ProxyConfig.UseHttp ? "http" : "https";
+                ServerInfoGetter.Scheme = launcherConfig.ProxyConfig.UseHttp ? "http" : "https";
                 ServerInfo = await ServerInfoGetter.GetAsync(launcherConfig.ProxyConfig.ProxyServer);
                 AnnounceMents = await ServerInfoGetter.GetAnnounceAsync(launcherConfig.ProxyConfig.ProxyServer);
 
