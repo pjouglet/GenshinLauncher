@@ -118,94 +118,98 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ABOUT" xml:space="preserve">
-    <value>About</value>
+    <value>关于</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>bg.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="BOOT_TARGET_FILE_NOT_FOUND" xml:space="preserve">
     <value>找不到启动目标文件</value>
   </data>
   <data name="CANCEL" xml:space="preserve">
-    <value>Cancel</value>
+    <value>取消</value>
   </data>
   <data name="CONFIGURATION_ERROR" xml:space="preserve">
-    <value>Configuration error !</value>
+    <value>配置项不正确！</value>
   </data>
   <data name="CONFIRM" xml:space="preserve">
-    <value>Confirm</value>
+    <value>确认</value>
   </data>
   <data name="ERROR_SUBMITION" xml:space="preserve">
-    <value>Please submit the err.log to issue tracker.</value>
+    <value>请吧程序目录下的 err.log 提交至项目issues！</value>
   </data>
   <data name="FAILED" xml:space="preserve">
-    <value>Failed</value>
+    <value>补丁失败</value>
   </data>
   <data name="GAME_PATH_NOT_SET" xml:space="preserve">
-    <value>Please set game path !</value>
+    <value>请设定游戏路径！</value>
   </data>
   <data name="INCORRECT_PATCH_TARGET" xml:space="preserve">
-    <value>Incorrect patch target: Not official file !</value>
+    <value>补丁目标不正确：不是官方文件！</value>
   </data>
   <data name="KEY_LENGTH_NO_MATCH" xml:space="preserve">
     <value>Key length doesn't match.</value>
   </data>
   <data name="LAUNCH" xml:space="preserve">
-    <value>Launch</value>
+    <value>开始游戏</value>
   </data>
   <data name="LOCAL_PROXY_PORT" xml:space="preserve">
-    <value>Local proxy port</value>
+    <value>本地代理端口</value>
   </data>
   <data name="MAIN_WINDOW_GAME_NAME" xml:space="preserve">
-    <value>Genshin Impact</value>
+    <value>原神</value>
   </data>
   <data name="MAIN_WINDOW_NOTICES" xml:space="preserve">
-    <value>Notices</value>
+    <value>公告</value>
   </data>
   <data name="MAIN_WINDOW_ONLINE" xml:space="preserve">
-    <value>[Online]:</value>
+    <value>[在线]:</value>
   </data>
   <data name="MAIN_WINDOW_STATUS" xml:space="preserve">
-    <value>Status</value>
+    <value>原神</value>
   </data>
   <data name="MAIN_WINDOW_STATUS_TOOLTIP" xml:space="preserve">
-    <value>Click to refresh</value>
+    <value>点击刷新</value>
   </data>
   <data name="MAIN_WINDOW_VERSION" xml:space="preserve">
-    <value>[Version]:</value>
+    <value>[版本]:</value>
   </data>
   <data name="MD5_HASH_ERROR" xml:space="preserve">
     <value>GetMD5HashFromFile() fail,error</value>
   </data>
   <data name="NO_BACKUP_FOUND" xml:space="preserve">
-    <value>No backup file found !</value>
+    <value>未找到备份文件！</value>
   </data>
   <data name="ONLY_ONE_INSTANCE_ALLOWED" xml:space="preserve">
-    <value>Another instance of the application is already running.</value>
+    <value>已有一个程序实例运行</value>
   </data>
   <data name="PATCH_OFFICIAL" xml:space="preserve">
-    <value>Official</value>
+    <value>官方</value>
   </data>
   <data name="PATCH_PATCHED_ALL" xml:space="preserve">
-    <value>Patched-ALL</value>
+    <value>已打补丁-ALL</value>
   </data>
   <data name="PATCH_PATCHED_META" xml:space="preserve">
-    <value>Patched-Meta</value>
+    <value>已打补丁-Meta</value>
   </data>
   <data name="PATCH_PATCHED_UA" xml:space="preserve">
-    <value>Patched-UA</value>
+    <value>已打补丁-UA</value>
   </data>
   <data name="PKG_VERSION_NOT_FOUND" xml:space="preserve">
-    <value>pkg_version file not found !</value>
+    <value>找不到pkg_version文件！</value>
   </data>
   <data name="PROGRAM_CRASHED" xml:space="preserve">
-    <value>Error</value>
+    <value>程序崩溃了！</value>
   </data>
   <data name="RESTORE_FAILED_NOT_OFFICIAL" xml:space="preserve">
-    <value>Backup file is not an official one. Restore failed</value>
+    <value>备份文件不是官方文件，恢复失败！</value>
   </data>
   <data name="RESTORE_SUCCESS" xml:space="preserve">
-    <value>Successfully restored backup !</value>
+    <value>未找到备份文件！</value>
   </data>
   <data name="SERVER_ADDRESS" xml:space="preserve">
-    <value>Server address</value>
+    <value>服务器地址</value>
   </data>
   <data name="SERVER_OFFICIAL" xml:space="preserve">
     <value>OFFICIAL</value>
@@ -214,79 +218,78 @@
     <value>PRIVATE</value>
   </data>
   <data name="SETTINGS_3_1_INFORMATION" xml:space="preserve">
-    <value>UA Patch is required for 3.1 version. For other versions, download the previous launcher.</value>
+    <value>游戏版本为3.1 需要 UA 补丁， 其他版本请下载旧版启动器。</value>
   </data>
   <data name="SETTINGS_CURRENT_GAME_PATH" xml:space="preserve">
-    <value>Current path</value>
+    <value>当前游戏路径</value>
   </data>
   <data name="SETTINGS_CURRENT_PATCH_STATUS" xml:space="preserve">
-    <value>Current patch status:</value>
+    <value>当前补丁状态:</value>
   </data>
   <data name="SETTINGS_GAME_RESOURCES" xml:space="preserve">
-    <value>Games Resources</value>
+    <value>游戏资源</value>
   </data>
   <data name="SETTINGS_GENERAL" xml:space="preserve">
-    <value>General</value>
+    <value>通用设置</value>
   </data>
   <data name="SETTINGS_LOCAL_FILES" xml:space="preserve">
-    <value>Local Files</value>
+    <value>本地文件</value>
   </data>
   <data name="SETTINGS_METADATA_PATCH" xml:space="preserve">
-    <value>Metadata patch</value>
+    <value>Metadata补丁</value>
   </data>
   <data name="SETTINGS_NETWORK" xml:space="preserve">
-    <value>Network configuration</value>
+    <value>代理</value>
   </data>
   <data name="SETTINGS_PATCH_TOOLS" xml:space="preserve">
-    <value>Patch tools</value>
+    <value>补丁工具</value>
   </data>
   <data name="SETTINGS_REPOSITORY" xml:space="preserve">
-    <value>Github repository</value>
+    <value>开源仓库</value>
   </data>
   <data name="SETTINGS_RESTORE_BACKUP" xml:space="preserve">
-    <value>Restore backup</value>
+    <value>从备份中恢复</value>
   </data>
   <data name="SETTINGS_TITLE" xml:space="preserve">
-    <value>Settings</value>
+    <value>设置</value>
   </data>
   <data name="SETTINGS_USERASSEMBLY_PATCH" xml:space="preserve">
-    <value>UserAssembly patch</value>
+    <value>UserAssemby补丁</value>
   </data>
   <data name="SETTINGS_VERSION_INFORMATION" xml:space="preserve">
-    <value>Version Info</value>
+    <value>版本信息</value>
   </data>
   <data name="SETTING_AUTOMATIC_LOCATE" xml:space="preserve">
-    <value>Find automatically</value>
+    <value>自动搜索</value>
   </data>
   <data name="SETTING_BUG_REPORT" xml:space="preserve">
-    <value>Report a bug</value>
+    <value>bug反馈</value>
   </data>
   <data name="SETTING_INTERNAL_BETA_VERSION" xml:space="preserve">
-    <value>Internal beta version</value>
+    <value>内部测试版本</value>
   </data>
   <data name="SETTING_MANUAL_LOCATE" xml:space="preserve">
-    <value>Find manually</value>
+    <value>手动指定位置</value>
   </data>
   <data name="SETTING_USAGE_WARNING" xml:space="preserve">
-    <value>This tool is use for research and learn purposes. 
-Do not use it outside of those fields.</value>
+    <value>仅供学习交流使用，请勿用于其他用途！</value>
   </data>
   <data name="STOP_PROXY" xml:space="preserve">
-    <value>Stop Proxy</value>
+    <value>关闭代理</value>
   </data>
   <data name="UNKNOWN" xml:space="preserve">
-    <value>Unknown</value>
+    <value>未知</value>
   </data>
   <data name="UNKNOWN_CLIENT_VERSION" xml:space="preserve">
-    <value>Unknown client version !</value>
+    <value>未知版本的客户端！</value>
   </data>
   <data name="USERASSEMBLY_PATCH_SUCCESS" xml:space="preserve">
-    <value>Successfully patched UserAssembly.dll !</value>
+    <value>成功补丁了 UserAssembly.dll!</value>
   </data>
   <data name="USE_HTTP" xml:space="preserve">
-    <value>Use HTTP</value>
+    <value>使用http</value>
   </data>
   <data name="USE_ONLY_PROXY" xml:space="preserve">
-    <value>Use only proxy</value>
+    <value>仅启用代理</value>
   </data>
 </root>

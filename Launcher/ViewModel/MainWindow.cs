@@ -87,11 +87,11 @@ namespace Launcher.ViewModel
         {
             switch (new PatchHelper(launcherConfig.GameInfo).GetPatchStatue())
             {
-                case PatchHelper.PatchType.None: PatchStatueStr = Launcher.Resources.Strings.PATCH_OFFICIAL; break;
-                case PatchHelper.PatchType.All: PatchStatueStr = Launcher.Resources.Strings.PATCH_PATCHED_ALL; break;
-                case PatchHelper.PatchType.MetaData: PatchStatueStr = Launcher.Resources.Strings.PATCH_PATCHED_META; break;
-                case PatchHelper.PatchType.UserAssemby: PatchStatueStr = Launcher.Resources.Strings.PATCH_PATCHED_UA; break;
-                case PatchHelper.PatchType.Unknown: PatchStatueStr = Launcher.Resources.Strings.UNKNOWN; break;
+                case PatchHelper.PatchType.None: PatchStatueStr = Launcher.Resources.Resources.PATCH_OFFICIAL; break;
+                case PatchHelper.PatchType.All: PatchStatueStr = Launcher.Resources.Resources.PATCH_PATCHED_ALL; break;
+                case PatchHelper.PatchType.MetaData: PatchStatueStr = Launcher.Resources.Resources.PATCH_PATCHED_META; break;
+                case PatchHelper.PatchType.UserAssemby: PatchStatueStr = Launcher.Resources.Resources.PATCH_PATCHED_UA; break;
+                case PatchHelper.PatchType.Unknown: PatchStatueStr = Launcher.Resources.Resources.UNKNOWN; break;
             }
         }
         public void SaveConfig()
@@ -104,10 +104,10 @@ namespace Launcher.ViewModel
         private LauncherConfig launcherConfig;
 
         [ObservableProperty]
-        private string startGameBtnText = Launcher.Resources.Strings.LAUNCH;
+        private string startGameBtnText = Launcher.Resources.Resources.LAUNCH;
 
         [ObservableProperty]
-        private string patchStatueStr = Launcher.Resources.Strings.UNKNOWN;
+        private string patchStatueStr = Launcher.Resources.Resources.UNKNOWN;
 
         [ObservableProperty]
         private ServerInfo serverInfo = new ServerInfo();
@@ -125,7 +125,7 @@ namespace Launcher.ViewModel
                 {
                     proxyController = new ProxyHelper.ProxyController(host: launcherConfig.ProxyConfig.ProxyServer, port: launcherConfig.ProxyConfig.ProxyPort, usehttp: launcherConfig.ProxyConfig.UseHttp);
                     proxyController.Start();
-                    StartGameBtnText = Launcher.Resources.Strings.STOP_PROXY;
+                    StartGameBtnText = Launcher.Resources.Resources.STOP_PROXY;
                     return;
 
                 }
@@ -133,13 +133,13 @@ namespace Launcher.ViewModel
                 {
                     proxyController.Stop();
                     proxyController = null;
-                    StartGameBtnText = Launcher.Resources.Strings.LAUNCH;
+                    StartGameBtnText = Launcher.Resources.Resources.LAUNCH;
 
                 }
                 else
                 {
                     proxyController.Start();
-                    StartGameBtnText = Launcher.Resources.Strings.STOP_PROXY;
+                    StartGameBtnText = Launcher.Resources.Resources.STOP_PROXY;
 
                 }
                 return;
@@ -157,7 +157,7 @@ namespace Launcher.ViewModel
 
                 if (!CheckGameCfg())
                 {
-                    MessageBox.Show(Launcher.Resources.Strings.CONFIGURATION_ERROR);
+                    MessageBox.Show(Launcher.Resources.Resources.CONFIGURATION_ERROR);
                     return;
                 }
                 IsGameRunning = true;
@@ -168,7 +168,7 @@ namespace Launcher.ViewModel
                     usehttp: launcherConfig.ProxyConfig.UseHttp
                     );
                 proxyController.Start();
-                StartGameBtnText = Launcher.Resources.Strings.STOP_PROXY;
+                StartGameBtnText = Launcher.Resources.Resources.STOP_PROXY;
 
                 GameHelper.StartGame(launcherConfig.GameInfo.GameExePath);
 
@@ -182,7 +182,7 @@ namespace Launcher.ViewModel
                     proxyController.Stop();
                 }
                 proxyController = null;
-                StartGameBtnText = Launcher.Resources.Strings.LAUNCH;
+                StartGameBtnText = Launcher.Resources.Resources.LAUNCH;
                 IsGameRunning = false;
             }
 
@@ -193,7 +193,7 @@ namespace Launcher.ViewModel
             {
                 return true;
             }
-            MessageBox.Show(Launcher.Resources.Strings.GAME_PATH_NOT_SET);
+            MessageBox.Show(Launcher.Resources.Resources.GAME_PATH_NOT_SET);
             return false;
         }
 

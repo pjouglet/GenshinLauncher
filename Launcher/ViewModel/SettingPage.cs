@@ -17,7 +17,7 @@ namespace Launcher.ViewModel
         private LauncherConfig launcherConfig;
 
         [ObservableProperty]
-        private string patchStatueStr = Launcher.Resources.Strings.UNKNOWN;
+        private string patchStatueStr = Launcher.Resources.Resources.UNKNOWN;
 
 
         public SettingPage()
@@ -42,10 +42,10 @@ namespace Launcher.ViewModel
 
             switch (new PatchHelper(launcherConfig.GameInfo).GetPatchStatue())
             {
-                case PatchHelper.PatchType.None: PatchStatueStr = Launcher.Resources.Strings.PATCH_OFFICIAL; break;
-                case PatchHelper.PatchType.All: PatchStatueStr = Launcher.Resources.Strings.PATCH_PATCHED_ALL; break;
-                case PatchHelper.PatchType.MetaData: PatchStatueStr = Launcher.Resources.Strings.PATCH_PATCHED_META; break;
-                case PatchHelper.PatchType.UserAssemby: PatchStatueStr = Launcher.Resources.Strings.PATCH_PATCHED_UA; break;
+                case PatchHelper.PatchType.None: PatchStatueStr = Launcher.Resources.Resources.PATCH_OFFICIAL; break;
+                case PatchHelper.PatchType.All: PatchStatueStr = Launcher.Resources.Resources.PATCH_PATCHED_ALL; break;
+                case PatchHelper.PatchType.MetaData: PatchStatueStr = Launcher.Resources.Resources.PATCH_PATCHED_META; break;
+                case PatchHelper.PatchType.UserAssemby: PatchStatueStr = Launcher.Resources.Resources.PATCH_PATCHED_UA; break;
             }
             GlobalValues.MainWindow.vm.PatchStatueStr = PatchStatueStr;
 

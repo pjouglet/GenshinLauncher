@@ -79,7 +79,7 @@ namespace Launcher.Common.Patch
             }
             catch (Exception ex)
             {
-                throw new Exception($"{Launcher.Resources.Strings.MD5_HASH_ERROR}: {ex.Message}");
+                throw new Exception($"{Launcher.Resources.Resources.MD5_HASH_ERROR}: {ex.Message}");
             }
 
         }
@@ -92,7 +92,7 @@ namespace Launcher.Common.Patch
             string backup = string.Empty;
 
             if (!File.Exists(FILE_NAME))
-                throw new Exception(Launcher.Resources.Strings.PKG_VERSION_NOT_FOUND);
+                throw new Exception(Launcher.Resources.Resources.PKG_VERSION_NOT_FOUND);
 
             if (FILE_NAME.Contains(METADATA_FILE_NAME))
             {
@@ -118,7 +118,7 @@ namespace Launcher.Common.Patch
                 return;
 
             if (official != currentMd5)
-                throw new Exception(Launcher.Resources.Strings.INCORRECT_PATCH_TARGET);
+                throw new Exception(Launcher.Resources.Resources.INCORRECT_PATCH_TARGET);
 
             File.Copy(FILE_NAME, FILE_NAME + ".bak");
         }
@@ -130,7 +130,7 @@ namespace Launcher.Common.Patch
 
             if (!File.Exists(FILE_NAME + ".bak"))
             {
-                MessageBox.Show(Launcher.Resources.Strings.NO_BACKUP_FOUND);
+                MessageBox.Show(Launcher.Resources.Resources.NO_BACKUP_FOUND);
                 return;
             }
 
@@ -150,12 +150,12 @@ namespace Launcher.Common.Patch
 
             if (official != backup)
             {
-                MessageBox.Show(Launcher.Resources.Strings.RESTORE_FAILED_NOT_OFFICIAL);
+                MessageBox.Show(Launcher.Resources.Resources.RESTORE_FAILED_NOT_OFFICIAL);
                 return;
             }
 
             File.Copy(FILE_NAME + ".bak", FILE_NAME, true);
-            MessageBox.Show(Launcher.Resources.Strings.RESTORE_SUCCESS);
+            MessageBox.Show(Launcher.Resources.Resources.RESTORE_SUCCESS);
         }
 
 
@@ -224,11 +224,11 @@ namespace Launcher.Common.Patch
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"{Launcher.Resources.Strings.FAILED}: {ex}");
+                MessageBox.Show($"{Launcher.Resources.Resources.FAILED}: {ex}");
                 return;
             }
 
-            MessageBox.Show(Launcher.Resources.Strings.USERASSEMBLY_PATCH_SUCCESS);
+            MessageBox.Show(Launcher.Resources.Resources.USERASSEMBLY_PATCH_SUCCESS);
         }
 
         internal void UnPatchUserAssembly()

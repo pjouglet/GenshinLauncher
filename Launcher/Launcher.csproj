@@ -24,7 +24,6 @@
     <None Remove="key\UA-key.txt" />
     <None Remove="key\UA-OS.txt" />
     <None Remove="Resources\1.jpg" />
-    <None Remove="Resources\bg.png" />
     <None Remove="Resources\Icon\discord.svg" />
     <None Remove="Resources\Icon\github.svg" />
     <None Remove="Resources\Icon\QQ.svg" />
@@ -43,9 +42,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\1.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\bg.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Icon\discord.svg">
@@ -82,16 +78,16 @@
     <PackageReference Include="Titanium.Web.Proxy" Version="3.2.0" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Resources\Strings.Designer.cs">
+    <Compile Update="Resources\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>Strings.resx</DependentUpon>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Update="Resources\Strings.resx">
+    <EmbeddedResource Update="Resources\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -99,6 +95,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Update="key\passwordKey.txt">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\bg.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
   </ItemGroup>

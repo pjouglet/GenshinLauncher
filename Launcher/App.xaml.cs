@@ -27,7 +27,7 @@ namespace Launcher
 
             if (!ret)
             {
-                MessageBox.Show(Launcher.Resources.Strings.ONLY_ONE_INSTANCE_ALLOWED);
+                MessageBox.Show(Launcher.Resources.Resources.ONLY_ONE_INSTANCE_ALLOWED);
                 Environment.Exit(0);
             }
 
@@ -40,7 +40,7 @@ namespace Launcher
             Console.WriteLine("UnHandled Exception Caught : " + e.Message);
             Console.WriteLine("Runtime terminating: {0}", args.IsTerminating);
 
-            MessageBox.Show(e.Message + "\n" + Launcher.Resources.Strings.ERROR_SUBMITION, Launcher.Resources.Strings.PROGRAM_CRASHED);
+            MessageBox.Show(e.Message + "\n" + Launcher.Resources.Resources.ERROR_SUBMITION, Launcher.Resources.Resources.PROGRAM_CRASHED);
             System.IO.File.WriteAllText("err.log", e.Message + JsonConvert.SerializeObject(e));
             Environment.Exit(0);
 

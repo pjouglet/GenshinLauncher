@@ -1,6 +1,8 @@
 ﻿using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Launcher
 {
@@ -17,6 +19,7 @@ namespace Launcher
             vm = new ViewModel.MainWindow();
             DataContext = vm;
             GlobalValues.frame = dialog_frame;
+            Background.ImageSource = (ImageSource)new ImageSourceConverter().ConvertFrom(Launcher.Resources.Resources.bg);
         }
 
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

@@ -125,7 +125,7 @@ namespace Launcher.Common.Patch
                 //case GameInfo.GameType.UnKnown:
                 //    break;
                 default:
-                    throw new Exception(Resources.Strings.UNKNOWN_CLIENT_VERSION);
+                    throw new Exception(Resources.Resources.UNKNOWN_CLIENT_VERSION);
                     break;
             }
         }
@@ -135,7 +135,7 @@ namespace Launcher.Common.Patch
 
             if (UA_CN.Length != UA_key.Length)
             {
-                throw new Exception(Resources.Strings.KEY_LENGTH_NO_MATCH);
+                throw new Exception(Resources.Resources.KEY_LENGTH_NO_MATCH);
             }
 
             int Offset = 0;
@@ -180,7 +180,7 @@ namespace Launcher.Common.Patch
 
             if (UA_OS.Length != UA_key.Length)
             {
-                throw new Exception(Resources.Strings.KEY_LENGTH_NO_MATCH);
+                throw new Exception(Resources.Resources.KEY_LENGTH_NO_MATCH);
             }
 
             int Offset = 0;

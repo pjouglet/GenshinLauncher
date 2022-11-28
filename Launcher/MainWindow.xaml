@@ -17,7 +17,7 @@
     ResizeMode="NoResize"
     mc:Ignorable="d">
     <Window.Background>
-        <ImageBrush ImageSource="Resources/bg.png" />
+        <ImageBrush x:Name="Background" />
 
     </Window.Background>
     <WindowChrome.WindowChrome>
@@ -35,7 +35,7 @@
                 VerticalAlignment="Center"
                 FontSize="14"
                 Foreground="White">
-                <Run Text="{x:Static resources:Strings.MAIN_WINDOW_GAME_NAME }" />
+                <Run Text="{x:Static resources:Resources.MAIN_WINDOW_GAME_NAME }" />
                 <Run
                     FontWeight="Light"
                     Foreground="Gray"
@@ -117,9 +117,9 @@
                         </Style>
                     </TabControl.Resources>
                     <TabItem
-                        Header="{x:Static resources:Strings.MAIN_WINDOW_STATUS }"
+                        Header="{x:Static resources:Resources.MAIN_WINDOW_STATUS }"
                         Style="{DynamicResource TabItemStyle1}"
-                        ToolTip="{x:Static resources:Strings.MAIN_WINDOW_STATUS_TOOLTIP }">
+                        ToolTip="{x:Static resources:Resources.MAIN_WINDOW_STATUS_TOOLTIP }">
                         <StackPanel Margin="10" MouseLeftButtonDown="RefreshServerInfo">
                             <!--<TextBlock HorizontalAlignment="Center" Text="ServerInfo" />-->
                             <TextBlock LineHeight="32">
@@ -127,16 +127,16 @@
                                 <Run Text="{Binding ServerInfo.timeout}" />
                                 <Run Text="ms" />
                                 <LineBreak />
-                                <Run Text="{x:Static resources:Strings.MAIN_WINDOW_ONLINE }" />
+                                <Run Text="{x:Static resources:Resources.MAIN_WINDOW_ONLINE }" />
                                 <Run Text="{Binding ServerInfo.players}" />
                                 <LineBreak />
 
-                                <Run Text="{x:Static resources:Strings.MAIN_WINDOW_VERSION }" />
+                                <Run Text="{x:Static resources:Resources.MAIN_WINDOW_VERSION }" />
                                 <Run Text="{Binding ServerInfo.ver}" />
                             </TextBlock>
                         </StackPanel>
                     </TabItem>
-                    <TabItem Header="{x:Static resources:Strings.MAIN_WINDOW_NOTICES }" Style="{DynamicResource TabItemStyle1}">
+                    <TabItem Header="{x:Static resources:Resources.MAIN_WINDOW_NOTICES }" Style="{DynamicResource TabItemStyle1}">
                         <ItemsControl ItemsSource="{Binding AnnounceMents}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
@@ -208,7 +208,7 @@
                     Height="64"
                     Background="#ffd325"
                     Command="{Binding StartGameCommand}"
-                    Content="{Binding StartGameBtnText, FallbackValue={x:Static resources:Strings.LAUNCH}}"
+                    Content="{Binding StartGameBtnText, FallbackValue={x:Static resources:Resources.LAUNCH}}"
                     Cursor="Hand"
                     FontSize="24"
                     Foreground="#704a1d"
@@ -240,11 +240,11 @@
                             <MenuItem
                                 Click="Official_Sel"
                                 FontWeight="Bold"
-                                Header="{x:Static resources:Strings.SERVER_OFFICIAL}" />
+                                Header="{x:Static resources:Resources.SERVER_OFFICIAL}" />
                             <MenuItem
                                 Click="Private_Sel"
                                 FontWeight="Bold"
-                                Header="{x:Static resources:Strings.SERVER_PRIVATE}" />
+                                Header="{x:Static resources:Resources.SERVER_PRIVATE}" />
                         </StackPanel>
                     </Border>
                 </Popup>

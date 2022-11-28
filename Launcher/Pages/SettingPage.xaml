@@ -27,13 +27,13 @@
                 BorderThickness="0"
                 SelectedIndex="0">
                 <ListViewItem Style="{DynamicResource SideBarTabStyle}" >
-                    <TextBlock Text="{x:Static resources:Strings.SETTINGS_GENERAL }"/>
+                    <TextBlock Text="{x:Static resources:Resources.SETTINGS_GENERAL }"/>
                 </ListViewItem>
                 <ListViewItem Style="{DynamicResource SideBarTabStyle}">
-                    <TextBlock Text="{x:Static resources:Strings.SETTINGS_GAME_RESOURCES }"/>
+                    <TextBlock Text="{x:Static resources:Resources.SETTINGS_GAME_RESOURCES }"/>
                 </ListViewItem>
                 <ListViewItem Style="{DynamicResource SideBarTabStyle}">
-                    <TextBlock Text="{x:Static resources:Strings.SETTINGS_VERSION_INFORMATION }"/>
+                    <TextBlock Text="{x:Static resources:Resources.SETTINGS_VERSION_INFORMATION }"/>
                 </ListViewItem>
             </ListView>
 
@@ -48,7 +48,7 @@
                 <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
                     <StackPanel Margin="30,0">
                         <TextBlock Margin="0,5" FontSize="20">
-                            <TextBlock Text="{x:Static resources:Strings.SETTINGS_LOCAL_FILES }"/>
+                            <TextBlock Text="{x:Static resources:Resources.SETTINGS_LOCAL_FILES }"/>
                         </TextBlock>
                         <StackPanel Orientation="Horizontal">
 
@@ -57,7 +57,7 @@
                                 Margin="0,5,0,0"
                                 HorizontalAlignment="Left"
                                 Command="{Binding SearchGameFileCommand}"
-                                Content="{x:Static resources:Strings.SETTING_AUTOMATIC_LOCATE}"
+                                Content="{x:Static resources:Resources.SETTING_AUTOMATIC_LOCATE}"
                                 FontSize="14"
                                 Style="{StaticResource ButtonStyle2}" />
                             <Button
@@ -65,7 +65,7 @@
                                 Margin="20,5,0,0"
                                 HorizontalAlignment="Left"
                                 Command="{Binding SetGameExePathCommand}"
-                                Content="{x:Static resources:Strings.SETTING_MANUAL_LOCATE}"
+                                Content="{x:Static resources:Resources.SETTING_MANUAL_LOCATE}"
                                 FontSize="14"
                                 Style="{StaticResource ButtonStyle1}" />
                         </StackPanel>
@@ -73,7 +73,7 @@
                             Margin="0,5"
                             FontSize="14"
                             Foreground="Gray">
-                            <TextBlock Text="{x:Static resources:Strings.SETTINGS_CURRENT_GAME_PATH}"/>
+                            <TextBlock Text="{x:Static resources:Resources.SETTINGS_CURRENT_GAME_PATH}"/>
                         </TextBlock>
                         <TextBox
                             Padding="8"
@@ -83,7 +83,7 @@
                             Foreground="Gray"
                             Text="{Binding LauncherConfig.GameInfo.GameExePath}" />
 
-                        <TextBlock Margin="0,25,0,0" FontSize="20" Text="{x:Static resources:Strings.SETTINGS_NETWORK}"/>
+                        <TextBlock Margin="0,25,0,0" FontSize="20" Text="{x:Static resources:Resources.SETTINGS_NETWORK}"/>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
@@ -99,7 +99,7 @@
                                 Margin="0,5"
                                 FontSize="14"
                                 Foreground="Gray"
-                                Text="{x:Static resources:Strings.SERVER_ADDRESS}">
+                                Text="{x:Static resources:Resources.SERVER_ADDRESS}">
                             </TextBlock>
                             <TextBox
                                 Grid.Row="1"
@@ -115,7 +115,7 @@
                                 Margin="0,5"
                                 FontSize="14"
                                 Foreground="Gray"
-                                Text="{x:Static resources:Strings.LOCAL_PROXY_PORT}">
+                                Text="{x:Static resources:Resources.LOCAL_PROXY_PORT}">
                             </TextBlock>
                             <TextBox
                                 Grid.Row="1"
@@ -136,7 +136,7 @@
                             FontSize="16"
                             IsChecked="{Binding LauncherConfig.ProxyOnly}"
                             Style="{DynamicResource SimpleCheckBox}">
-                            <TextBlock Text="{x:Static resources:Strings.USE_ONLY_PROXY}"/>
+                            <TextBlock Text="{x:Static resources:Resources.USE_ONLY_PROXY}"/>
                         </CheckBox>
                         <CheckBox
                             Height="26"
@@ -145,12 +145,12 @@
                             FontSize="16"
                             IsChecked="{Binding LauncherConfig.ProxyConfig.UseHttp}"
                             Style="{DynamicResource SimpleCheckBox}">
-                            <TextBlock Text="{x:Static resources:Strings.USE_HTTP}"/>
+                            <TextBlock Text="{x:Static resources:Resources.USE_HTTP}"/>
                         </CheckBox>
                         <StackPanel Margin="0,25,0,5" Orientation="Horizontal">
 
                             <TextBlock FontSize="20">
-                                <Run Text="{x:Static resources:Strings.SETTINGS_PATCH_TOOLS}" />
+                                <Run Text="{x:Static resources:Resources.SETTINGS_PATCH_TOOLS}" />
 
                             </TextBlock>
 
@@ -164,7 +164,7 @@
                                 Cursor="Hand">
                                 <Border.ToolTip>
                                     <Border>
-                                        <TextBlock Text="{x:Static resources:Strings.SETTINGS_3_1_INFORMATION}" />
+                                        <TextBlock Text="{x:Static resources:Resources.SETTINGS_3_1_INFORMATION}" />
                                     </Border>
                                 </Border.ToolTip>
                                 <TextBlock
@@ -183,7 +183,7 @@
                                 Margin="0,5"
                                 HorizontalAlignment="Left"
                                 Command="{Binding PatchMetaCommand}"
-                                Content="{x:Static resources:Strings.SETTINGS_METADATA_PATCH}"
+                                Content="{x:Static resources:Resources.SETTINGS_METADATA_PATCH}"
                                 FontSize="14"
                                 Style="{StaticResource ButtonStyle1}"
                                 Visibility="Collapsed" />
@@ -192,7 +192,7 @@
                                 Margin="0,5"
                                 HorizontalAlignment="Left"
                                 Command="{Binding PatchUACommand}"
-                                Content="{x:Static resources:Strings.SETTINGS_USERASSEMBLY_PATCH}"
+                                Content="{x:Static resources:Resources.SETTINGS_USERASSEMBLY_PATCH}"
                                 FontSize="14"
                                 Style="{StaticResource ButtonStyle2}" />
                         </StackPanel>
@@ -201,18 +201,18 @@
                             Margin="0,5"
                             HorizontalAlignment="Left"
                             Command="{Binding RestorePatchCommand}"
-                            Content="{x:Static resources:Strings.SETTINGS_RESTORE_BACKUP}"
+                            Content="{x:Static resources:Resources.SETTINGS_RESTORE_BACKUP}"
                             FontSize="14"
                             Style="{StaticResource ButtonStyle1}" />
                         <TextBlock
                             Margin="0,5"
                             FontSize="14"
                             Foreground="Gray">
-                            <Run Text="{x:Static resources:Strings.SETTINGS_CURRENT_PATCH_STATUS}" />
+                            <Run Text="{x:Static resources:Resources.SETTINGS_CURRENT_PATCH_STATUS}" />
                             <Run Text="{Binding PatchStatueStr}" />
                         </TextBlock>
 
-                        <TextBlock Margin="0,25,0,5" FontSize="20" Text="{x:Static resources:Strings.ABOUT}"/>
+                        <TextBlock Margin="0,25,0,5" FontSize="20" Text="{x:Static resources:Resources.ABOUT}"/>
 
                         <StackPanel Orientation="Horizontal">
                             <TextBlock
@@ -220,28 +220,28 @@
                                 FontSize="16"
                                 Foreground="#dcbc60"
                                 MouseLeftButtonDown="GoToBroswer"
-                                Tag="https://github.com/gc-toolkit/GenshinLauncher"
-                                Text="{x:Static resources:Strings.SETTINGS_REPOSITORY}" />
+                                Tag="https://github.com/pjouglet/GenshinLauncher"
+                                Text="{x:Static resources:Resources.SETTINGS_REPOSITORY}" />
                             <TextBlock
                                 Margin="10,0"
                                 Cursor="Hand"
                                 FontSize="16"
                                 Foreground="#dcbc60"
                                 MouseLeftButtonDown="GoToBroswer"
-                                Tag="https://github.com/gc-toolkit/GenshinLauncher/issues"
-                                Text="{x:Static resources:Strings.SETTING_BUG_REPORT}" />
+                                Tag="https://github.com/pjouglet/GenshinLauncher/issues"
+                                Text="{x:Static resources:Resources.SETTING_BUG_REPORT}" />
 
                         </StackPanel>
                         <TextBlock
                             Margin="0,20"
                             FontSize="16"
                             Foreground="Gray"
-                            Text="{x:Static resources:Strings.SETTING_INTERNAL_BETA_VERSION}" />
+                            Text="{x:Static resources:Resources.SETTING_INTERNAL_BETA_VERSION}" />
                         <TextBlock
                             Margin="0,20"
                             FontSize="16"
                             Foreground="Red"
-                            Text="{x:Static resources:Strings.SETTING_USAGE_WARNING}" />
+                            Text="{x:Static resources:Resources.SETTING_USAGE_WARNING}" />
 
                     </StackPanel>
                 </ScrollViewer>
@@ -257,11 +257,11 @@
                         Orientation="Horizontal">
                         <Button
                             Click="CloseDialog"
-                            Content="{x:Static resources:Strings.CANCEL }"
+                            Content="{x:Static resources:Resources.CANCEL }"
                             Style="{DynamicResource ButtonStyle1}" />
                         <Button
                             Command="{Binding SaveConfigCommand}"
-                            Content="{x:Static resources:Strings.CONFIRM }"
+                            Content="{x:Static resources:Resources.CONFIRM }"
                             Style="{DynamicResource ButtonStyle2}" />
                     </StackPanel>
                 </Grid>
@@ -272,7 +272,7 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 FontSize="28"
-                Text="{x:Static resources:Strings.SETTINGS_TITLE}" />
+                Text="{x:Static resources:Resources.SETTINGS_TITLE}" />
 
             <Button
                 Grid.Column="1"

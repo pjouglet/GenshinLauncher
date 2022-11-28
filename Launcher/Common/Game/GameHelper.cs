@@ -14,7 +14,7 @@ namespace Launcher.Common.Game
         {
             if (!File.Exists(filePath))
             {
-                MessageBox.Show(Launcher.Resources.Strings.BOOT_TARGET_FILE_NOT_FOUND);
+                MessageBox.Show(Launcher.Resources.Resources.BOOT_TARGET_FILE_NOT_FOUND);
                 return;
             }
 
