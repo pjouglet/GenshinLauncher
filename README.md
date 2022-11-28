@@ -4,6 +4,8 @@
 如果修补时候metadata目录残留其他版本的文件将导致备份/恢复功能出现问题从而损坏你的游戏文件~~
 如果你不修改pkg_version文件那么理论上来说它不会损坏游戏文件
 
+## 废弃/过时 的项目,请前往 [https://github.com/gc-toolkit/Launcher](https://github.com/gc-toolkit/Launcher)
+
 ## ✨功能 (持续完善ing)
 
 ✅ 高仿官方启动器UI  
