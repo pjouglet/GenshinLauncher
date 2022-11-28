@@ -61,6 +61,15 @@ namespace Launcher.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 关于.
+        /// </summary>
+        public static string ABOUT {
+            get {
+                return ResourceManager.GetString("ABOUT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 找不到启动目标文件.
         /// </summary>
         public static string BOOT_TARGET_FILE_NOT_FOUND {
@@ -322,6 +331,24 @@ namespace Launcher.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to bug反馈.
+        /// </summary>
+        public static string SETTING_BUG_REPORT {
+            get {
+                return ResourceManager.GetString("SETTING_BUG_REPORT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 内部测试版本.
+        /// </summary>
+        public static string SETTING_INTERNAL_BETA_VERSION {
+            get {
+                return ResourceManager.GetString("SETTING_INTERNAL_BETA_VERSION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 手动指定位置.
         /// </summary>
         public static string SETTING_MANUAL_LOCATE {
@@ -331,11 +358,38 @@ namespace Launcher.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 仅供学习交流使用，请勿用于其他用途！.
+        /// </summary>
+        public static string SETTING_USAGE_WARNING {
+            get {
+                return ResourceManager.GetString("SETTING_USAGE_WARNING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 游戏版本为3.1 需要 UA 补丁， 其他版本请下载旧版启动器。.
+        /// </summary>
+        public static string SETTINGS_3_1_INFORMATION {
+            get {
+                return ResourceManager.GetString("SETTINGS_3_1_INFORMATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 当前游戏路径.
         /// </summary>
         public static string SETTINGS_CURRENT_GAME_PATH {
             get {
                 return ResourceManager.GetString("SETTINGS_CURRENT_GAME_PATH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 当前补丁状态:.
+        /// </summary>
+        public static string SETTINGS_CURRENT_PATCH_STATUS {
+            get {
+                return ResourceManager.GetString("SETTINGS_CURRENT_PATCH_STATUS", resourceCulture);
             }
         }
         
@@ -367,6 +421,15 @@ namespace Launcher.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Metadata补丁.
+        /// </summary>
+        public static string SETTINGS_METADATA_PATCH {
+            get {
+                return ResourceManager.GetString("SETTINGS_METADATA_PATCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 代理.
         /// </summary>
         public static string SETTINGS_NETWORK {
@@ -376,11 +439,47 @@ namespace Launcher.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 补丁工具.
+        /// </summary>
+        public static string SETTINGS_PATCH_TOOLS {
+            get {
+                return ResourceManager.GetString("SETTINGS_PATCH_TOOLS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 开源仓库.
+        /// </summary>
+        public static string SETTINGS_REPOSITORY {
+            get {
+                return ResourceManager.GetString("SETTINGS_REPOSITORY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 从备份中恢复.
+        /// </summary>
+        public static string SETTINGS_RESTORE_BACKUP {
+            get {
+                return ResourceManager.GetString("SETTINGS_RESTORE_BACKUP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 设置.
         /// </summary>
         public static string SETTINGS_TITLE {
             get {
                 return ResourceManager.GetString("SETTINGS_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UserAssemby补丁.
+        /// </summary>
+        public static string SETTINGS_USERASSEMBLY_PATCH {
+            get {
+                return ResourceManager.GetString("SETTINGS_USERASSEMBLY_PATCH", resourceCulture);
             }
         }
         

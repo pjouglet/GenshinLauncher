@@ -150,7 +150,7 @@
                         <StackPanel Margin="0,25,0,5" Orientation="Horizontal">
 
                             <TextBlock FontSize="20">
-                                <Run Text="补丁工具" />
+                                <Run Text="{x:Static resources:Strings.SETTINGS_PATCH_TOOLS}" />
 
                             </TextBlock>
 
@@ -164,7 +164,7 @@
                                 Cursor="Hand">
                                 <Border.ToolTip>
                                     <Border>
-                                        <TextBlock Text="游戏版本为3.1 需要 UA 补丁， 其他版本请下载旧版启动器。" />
+                                        <TextBlock Text="{x:Static resources:Strings.SETTINGS_3_1_INFORMATION}" />
                                     </Border>
                                 </Border.ToolTip>
                                 <TextBlock
@@ -183,7 +183,7 @@
                                 Margin="0,5"
                                 HorizontalAlignment="Left"
                                 Command="{Binding PatchMetaCommand}"
-                                Content="Metadata补丁"
+                                Content="{x:Static resources:Strings.SETTINGS_METADATA_PATCH}"
                                 FontSize="14"
                                 Style="{StaticResource ButtonStyle1}"
                                 Visibility="Collapsed" />
@@ -192,7 +192,7 @@
                                 Margin="0,5"
                                 HorizontalAlignment="Left"
                                 Command="{Binding PatchUACommand}"
-                                Content="UserAssemby补丁"
+                                Content="{x:Static resources:Strings.SETTINGS_USERASSEMBLY_PATCH}"
                                 FontSize="14"
                                 Style="{StaticResource ButtonStyle2}" />
                         </StackPanel>
@@ -201,20 +201,18 @@
                             Margin="0,5"
                             HorizontalAlignment="Left"
                             Command="{Binding RestorePatchCommand}"
-                            Content="从备份中恢复"
+                            Content="{x:Static resources:Strings.SETTINGS_RESTORE_BACKUP}"
                             FontSize="14"
                             Style="{StaticResource ButtonStyle1}" />
                         <TextBlock
                             Margin="0,5"
                             FontSize="14"
                             Foreground="Gray">
-                            <Run Text="当前补丁状态:" />
+                            <Run Text="{x:Static resources:Strings.SETTINGS_CURRENT_PATCH_STATUS}" />
                             <Run Text="{Binding PatchStatueStr}" />
                         </TextBlock>
 
-                        <TextBlock Margin="0,25,0,5" FontSize="20">
-                            关于
-                        </TextBlock>
+                        <TextBlock Margin="0,25,0,5" FontSize="20" Text="{x:Static resources:Strings.ABOUT}"/>
 
                         <StackPanel Orientation="Horizontal">
                             <TextBlock
@@ -223,7 +221,7 @@
                                 Foreground="#dcbc60"
                                 MouseLeftButtonDown="GoToBroswer"
                                 Tag="https://github.com/gc-toolkit/GenshinLauncher"
-                                Text="开源仓库" />
+                                Text="{x:Static resources:Strings.SETTINGS_REPOSITORY}" />
                             <TextBlock
                                 Margin="10,0"
                                 Cursor="Hand"
@@ -231,19 +229,19 @@
                                 Foreground="#dcbc60"
                                 MouseLeftButtonDown="GoToBroswer"
                                 Tag="https://github.com/gc-toolkit/GenshinLauncher/issues"
-                                Text="bug反馈" />
+                                Text="{x:Static resources:Strings.SETTING_BUG_REPORT}" />
 
                         </StackPanel>
                         <TextBlock
                             Margin="0,20"
                             FontSize="16"
                             Foreground="Gray"
-                            Text="内部测试版本" />
+                            Text="{x:Static resources:Strings.SETTING_INTERNAL_BETA_VERSION}" />
                         <TextBlock
                             Margin="0,20"
                             FontSize="16"
                             Foreground="Red"
-                            Text="仅供学习交流使用，请勿用于其他用途！" />
+                            Text="{x:Static resources:Strings.SETTING_USAGE_WARNING}" />
 
                     </StackPanel>
                 </ScrollViewer>

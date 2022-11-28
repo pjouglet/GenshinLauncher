@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ABOUT" xml:space="preserve">
+    <value>关于</value>
+  </data>
   <data name="BOOT_TARGET_FILE_NOT_FOUND" xml:space="preserve">
     <value>找不到启动目标文件</value>
   </data>
@@ -201,8 +204,14 @@
   <data name="SERVER_PRIVATE" xml:space="preserve">
     <value>PRIVATE</value>
   </data>
+  <data name="SETTINGS_3_1_INFORMATION" xml:space="preserve">
+    <value>游戏版本为3.1 需要 UA 补丁， 其他版本请下载旧版启动器。</value>
+  </data>
   <data name="SETTINGS_CURRENT_GAME_PATH" xml:space="preserve">
     <value>当前游戏路径</value>
+  </data>
+  <data name="SETTINGS_CURRENT_PATCH_STATUS" xml:space="preserve">
+    <value>当前补丁状态:</value>
   </data>
   <data name="SETTINGS_GAME_RESOURCES" xml:space="preserve">
     <value>游戏资源</value>
@@ -213,11 +222,26 @@
   <data name="SETTINGS_LOCAL_FILES" xml:space="preserve">
     <value>本地文件</value>
   </data>
+  <data name="SETTINGS_METADATA_PATCH" xml:space="preserve">
+    <value>Metadata补丁</value>
+  </data>
   <data name="SETTINGS_NETWORK" xml:space="preserve">
     <value>代理</value>
   </data>
+  <data name="SETTINGS_PATCH_TOOLS" xml:space="preserve">
+    <value>补丁工具</value>
+  </data>
+  <data name="SETTINGS_REPOSITORY" xml:space="preserve">
+    <value>开源仓库</value>
+  </data>
+  <data name="SETTINGS_RESTORE_BACKUP" xml:space="preserve">
+    <value>从备份中恢复</value>
+  </data>
   <data name="SETTINGS_TITLE" xml:space="preserve">
     <value>设置</value>
+  </data>
+  <data name="SETTINGS_USERASSEMBLY_PATCH" xml:space="preserve">
+    <value>UserAssemby补丁</value>
   </data>
   <data name="SETTINGS_VERSION_INFORMATION" xml:space="preserve">
     <value>版本信息</value>
@@ -225,8 +249,17 @@
   <data name="SETTING_AUTOMATIC_LOCATE" xml:space="preserve">
     <value>自动搜索</value>
   </data>
+  <data name="SETTING_BUG_REPORT" xml:space="preserve">
+    <value>bug反馈</value>
+  </data>
+  <data name="SETTING_INTERNAL_BETA_VERSION" xml:space="preserve">
+    <value>内部测试版本</value>
+  </data>
   <data name="SETTING_MANUAL_LOCATE" xml:space="preserve">
     <value>手动指定位置</value>
+  </data>
+  <data name="SETTING_USAGE_WARNING" xml:space="preserve">
+    <value>仅供学习交流使用，请勿用于其他用途！</value>
   </data>
   <data name="STOP_PROXY" xml:space="preserve">
     <value>关闭代理</value>

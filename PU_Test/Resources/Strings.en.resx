@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ABOUT" xml:space="preserve">
+    <value>About</value>
+  </data>
   <data name="BOOT_TARGET_FILE_NOT_FOUND" xml:space="preserve">
     <value>找不到启动目标文件</value>
   </data>
@@ -201,8 +204,14 @@
   <data name="SERVER_PRIVATE" xml:space="preserve">
     <value>PRIVATE</value>
   </data>
+  <data name="SETTINGS_3_1_INFORMATION" xml:space="preserve">
+    <value>UA Patch is required for 3.1 version. For other versions, download the previous launcher.</value>
+  </data>
   <data name="SETTINGS_CURRENT_GAME_PATH" xml:space="preserve">
     <value>Current path</value>
+  </data>
+  <data name="SETTINGS_CURRENT_PATCH_STATUS" xml:space="preserve">
+    <value>Current patch status:</value>
   </data>
   <data name="SETTINGS_GAME_RESOURCES" xml:space="preserve">
     <value>Games Resources</value>
@@ -213,11 +222,26 @@
   <data name="SETTINGS_LOCAL_FILES" xml:space="preserve">
     <value>Local Files</value>
   </data>
+  <data name="SETTINGS_METADATA_PATCH" xml:space="preserve">
+    <value>Metadata patch</value>
+  </data>
   <data name="SETTINGS_NETWORK" xml:space="preserve">
     <value>Network configuration</value>
   </data>
+  <data name="SETTINGS_PATCH_TOOLS" xml:space="preserve">
+    <value>Patch tools</value>
+  </data>
+  <data name="SETTINGS_REPOSITORY" xml:space="preserve">
+    <value>Github repository</value>
+  </data>
+  <data name="SETTINGS_RESTORE_BACKUP" xml:space="preserve">
+    <value>Restore backup</value>
+  </data>
   <data name="SETTINGS_TITLE" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="SETTINGS_USERASSEMBLY_PATCH" xml:space="preserve">
+    <value>UserAssembly patch</value>
   </data>
   <data name="SETTINGS_VERSION_INFORMATION" xml:space="preserve">
     <value>Version Info</value>
@@ -225,8 +249,18 @@
   <data name="SETTING_AUTOMATIC_LOCATE" xml:space="preserve">
     <value>Find automatically</value>
   </data>
+  <data name="SETTING_BUG_REPORT" xml:space="preserve">
+    <value>Report a bug</value>
+  </data>
+  <data name="SETTING_INTERNAL_BETA_VERSION" xml:space="preserve">
+    <value>Internal beta version</value>
+  </data>
   <data name="SETTING_MANUAL_LOCATE" xml:space="preserve">
     <value>Find manually</value>
+  </data>
+  <data name="SETTING_USAGE_WARNING" xml:space="preserve">
+    <value>This tool is use for research and learn purposes. 
+Do not use it outside of those fields.</value>
   </data>
   <data name="STOP_PROXY" xml:space="preserve">
     <value>Stop Proxy</value>
