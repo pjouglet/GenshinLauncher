@@ -26,10 +26,10 @@ jobs:
       - name: Build
         run: msbuild GenshinLauncher.sln -p:Configuration=Release -m
 
-      - name: Publish net60
+      - name: Publish net70
         uses: actions/upload-artifact@v3
-        id: publish_net6
+        id: publish_net7
         with:
-          name: Launcher-NET6
+          name: Launcher-NET7
           path: |
-            PU_Test/bin/Release/net6.0-windows
+            Launcher/bin/Release/net7.0-windows
