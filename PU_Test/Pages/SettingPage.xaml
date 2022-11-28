@@ -6,6 +6,7 @@
     xmlns:local="clr-namespace:PU_Test.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:PU_Test.ViewModel"
+    xmlns:resources="clr-namespace:Launcher.Resources"
     Title="SettingPage"
     d:DataContext="{d:DesignInstance Type=vm:SettingPage}"
     mc:Ignorable="d">
@@ -25,14 +26,14 @@
                 Background="Transparent"
                 BorderThickness="0"
                 SelectedIndex="0">
-                <ListViewItem Style="{DynamicResource SideBarTabStyle}">
-                    通用设置
+                <ListViewItem Style="{DynamicResource SideBarTabStyle}" >
+                    <TextBlock Text="{x:Static resources:Strings.SETTINGS_GENERAL }"/>
                 </ListViewItem>
                 <ListViewItem Style="{DynamicResource SideBarTabStyle}">
-                    游戏资源
+                    <TextBlock Text="{x:Static resources:Strings.SETTINGS_GAME_RESOURCES }"/>
                 </ListViewItem>
                 <ListViewItem Style="{DynamicResource SideBarTabStyle}">
-                    版本信息
+                    <TextBlock Text="{x:Static resources:Strings.SETTINGS_VERSION_INFORMATION }"/>
                 </ListViewItem>
             </ListView>
 
@@ -47,7 +48,7 @@
                 <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
                     <StackPanel Margin="30,0">
                         <TextBlock Margin="0,5" FontSize="20">
-                            本地文件
+                            <TextBlock Text="{x:Static resources:Strings.SETTINGS_LOCAL_FILES }"/>
                         </TextBlock>
                         <StackPanel Orientation="Horizontal">
 
@@ -56,7 +57,7 @@
                                 Margin="0,5,0,0"
                                 HorizontalAlignment="Left"
                                 Command="{Binding SearchGameFileCommand}"
-                                Content="自动搜索"
+                                Content="{x:Static resources:Strings.SETTING_AUTOMATIC_LOCATE}"
                                 FontSize="14"
                                 Style="{StaticResource ButtonStyle2}" />
                             <Button
@@ -64,7 +65,7 @@
                                 Margin="20,5,0,0"
                                 HorizontalAlignment="Left"
                                 Command="{Binding SetGameExePathCommand}"
-                                Content="手动指定位置"
+                                Content="{x:Static resources:Strings.SETTING_MANUAL_LOCATE}"
                                 FontSize="14"
                                 Style="{StaticResource ButtonStyle1}" />
                         </StackPanel>
@@ -72,7 +73,7 @@
                             Margin="0,5"
                             FontSize="14"
                             Foreground="Gray">
-                            当前游戏路径
+                            <TextBlock Text="{x:Static resources:Strings.SETTINGS_CURRENT_GAME_PATH}"/>
                         </TextBlock>
                         <TextBox
                             Padding="8"
@@ -82,9 +83,7 @@
                             Foreground="Gray"
                             Text="{Binding LauncherConfig.GameInfo.GameExePath}" />
 
-                        <TextBlock Margin="0,25,0,0" FontSize="20">
-                            代理
-                        </TextBlock>
+                        <TextBlock Margin="0,25,0,0" FontSize="20" Text="{x:Static resources:Strings.SETTINGS_NETWORK}"/>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
@@ -99,8 +98,8 @@
                             <TextBlock
                                 Margin="0,5"
                                 FontSize="14"
-                                Foreground="Gray">
-                                服务器地址
+                                Foreground="Gray"
+                                Text="{x:Static resources:Strings.SERVER_ADDRESS}">
                             </TextBlock>
                             <TextBox
                                 Grid.Row="1"
@@ -115,8 +114,8 @@
                                 Grid.Column="2"
                                 Margin="0,5"
                                 FontSize="14"
-                                Foreground="Gray">
-                                本地代理端口
+                                Foreground="Gray"
+                                Text="{x:Static resources:Strings.LOCAL_PROXY_PORT}">
                             </TextBlock>
                             <TextBox
                                 Grid.Row="1"
@@ -137,7 +136,7 @@
                             FontSize="16"
                             IsChecked="{Binding LauncherConfig.ProxyOnly}"
                             Style="{DynamicResource SimpleCheckBox}">
-                            仅启用代理
+                            <TextBlock Text="{x:Static resources:Strings.USE_ONLY_PROXY}"/>
                         </CheckBox>
                         <CheckBox
                             Height="26"
@@ -146,7 +145,7 @@
                             FontSize="16"
                             IsChecked="{Binding LauncherConfig.ProxyConfig.UseHttp}"
                             Style="{DynamicResource SimpleCheckBox}">
-                            使用http
+                            <TextBlock Text="{x:Static resources:Strings.USE_HTTP}"/>
                         </CheckBox>
                         <StackPanel Margin="0,25,0,5" Orientation="Horizontal">
 
@@ -260,11 +259,11 @@
                         Orientation="Horizontal">
                         <Button
                             Click="CloseDialog"
-                            Content="取消"
+                            Content="{x:Static resources:Strings.CANCEL }"
                             Style="{DynamicResource ButtonStyle1}" />
                         <Button
                             Command="{Binding SaveConfigCommand}"
-                            Content="确认"
+                            Content="{x:Static resources:Strings.CONFIRM }"
                             Style="{DynamicResource ButtonStyle2}" />
                     </StackPanel>
                 </Grid>
@@ -275,7 +274,7 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 FontSize="28"
-                Text="设置" />
+                Text="{x:Static resources:Strings.SETTINGS_TITLE}" />
 
             <Button
                 Grid.Column="1"

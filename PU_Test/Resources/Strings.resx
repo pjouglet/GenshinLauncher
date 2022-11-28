@@ -120,8 +120,14 @@
   <data name="BOOT_TARGET_FILE_NOT_FOUND" xml:space="preserve">
     <value>找不到启动目标文件</value>
   </data>
+  <data name="CANCEL" xml:space="preserve">
+    <value>取消</value>
+  </data>
   <data name="CONFIGURATION_ERROR" xml:space="preserve">
     <value>配置项不正确！</value>
+  </data>
+  <data name="CONFIRM" xml:space="preserve">
+    <value>确认</value>
   </data>
   <data name="FAILED" xml:space="preserve">
     <value>补丁失败</value>
@@ -137,6 +143,9 @@
   </data>
   <data name="LAUNCH" xml:space="preserve">
     <value>开始游戏</value>
+  </data>
+  <data name="LOCAL_PROXY_PORT" xml:space="preserve">
+    <value>本地代理端口</value>
   </data>
   <data name="MAIN_WINDOW_GAME_NAME" xml:space="preserve">
     <value>原神</value>
@@ -183,11 +192,41 @@
   <data name="RESTORE_SUCCESS" xml:space="preserve">
     <value>未找到备份文件！</value>
   </data>
+  <data name="SERVER_ADDRESS" xml:space="preserve">
+    <value>服务器地址</value>
+  </data>
   <data name="SERVER_OFFICIAL" xml:space="preserve">
     <value>OFFICIAL</value>
   </data>
   <data name="SERVER_PRIVATE" xml:space="preserve">
     <value>PRIVATE</value>
+  </data>
+  <data name="SETTINGS_CURRENT_GAME_PATH" xml:space="preserve">
+    <value>当前游戏路径</value>
+  </data>
+  <data name="SETTINGS_GAME_RESOURCES" xml:space="preserve">
+    <value>游戏资源</value>
+  </data>
+  <data name="SETTINGS_GENERAL" xml:space="preserve">
+    <value>通用设置</value>
+  </data>
+  <data name="SETTINGS_LOCAL_FILES" xml:space="preserve">
+    <value>本地文件</value>
+  </data>
+  <data name="SETTINGS_NETWORK" xml:space="preserve">
+    <value>代理</value>
+  </data>
+  <data name="SETTINGS_TITLE" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="SETTINGS_VERSION_INFORMATION" xml:space="preserve">
+    <value>版本信息</value>
+  </data>
+  <data name="SETTING_AUTOMATIC_LOCATE" xml:space="preserve">
+    <value>自动搜索</value>
+  </data>
+  <data name="SETTING_MANUAL_LOCATE" xml:space="preserve">
+    <value>手动指定位置</value>
   </data>
   <data name="STOP_PROXY" xml:space="preserve">
     <value>关闭代理</value>
@@ -200,5 +239,11 @@
   </data>
   <data name="USERASSEMBLY_PATCH_SUCCESS" xml:space="preserve">
     <value>成功补丁了 UserAssembly.dll!</value>
+  </data>
+  <data name="USE_HTTP" xml:space="preserve">
+    <value>使用http</value>
+  </data>
+  <data name="USE_ONLY_PROXY" xml:space="preserve">
+    <value>仅启用代理</value>
   </data>
 </root>

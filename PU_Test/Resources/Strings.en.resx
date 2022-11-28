@@ -120,8 +120,14 @@
   <data name="BOOT_TARGET_FILE_NOT_FOUND" xml:space="preserve">
     <value>找不到启动目标文件</value>
   </data>
+  <data name="CANCEL" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
   <data name="CONFIGURATION_ERROR" xml:space="preserve">
     <value>Configuration error !</value>
+  </data>
+  <data name="CONFIRM" xml:space="preserve">
+    <value>Confirm</value>
   </data>
   <data name="FAILED" xml:space="preserve">
     <value>Failed</value>
@@ -137,6 +143,9 @@
   </data>
   <data name="LAUNCH" xml:space="preserve">
     <value>Launch</value>
+  </data>
+  <data name="LOCAL_PROXY_PORT" xml:space="preserve">
+    <value>Local proxy port</value>
   </data>
   <data name="MAIN_WINDOW_GAME_NAME" xml:space="preserve">
     <value>Genshin Impact</value>
@@ -183,11 +192,41 @@
   <data name="RESTORE_SUCCESS" xml:space="preserve">
     <value>Successfully restored backup !</value>
   </data>
+  <data name="SERVER_ADDRESS" xml:space="preserve">
+    <value>Server address</value>
+  </data>
   <data name="SERVER_OFFICIAL" xml:space="preserve">
     <value>OFFICIAL</value>
   </data>
   <data name="SERVER_PRIVATE" xml:space="preserve">
     <value>PRIVATE</value>
+  </data>
+  <data name="SETTINGS_CURRENT_GAME_PATH" xml:space="preserve">
+    <value>Current path</value>
+  </data>
+  <data name="SETTINGS_GAME_RESOURCES" xml:space="preserve">
+    <value>Games Resources</value>
+  </data>
+  <data name="SETTINGS_GENERAL" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="SETTINGS_LOCAL_FILES" xml:space="preserve">
+    <value>Local Files</value>
+  </data>
+  <data name="SETTINGS_NETWORK" xml:space="preserve">
+    <value>Network configuration</value>
+  </data>
+  <data name="SETTINGS_TITLE" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="SETTINGS_VERSION_INFORMATION" xml:space="preserve">
+    <value>Version Info</value>
+  </data>
+  <data name="SETTING_AUTOMATIC_LOCATE" xml:space="preserve">
+    <value>Find automatically</value>
+  </data>
+  <data name="SETTING_MANUAL_LOCATE" xml:space="preserve">
+    <value>Find manually</value>
   </data>
   <data name="STOP_PROXY" xml:space="preserve">
     <value>Stop Proxy</value>
@@ -200,5 +239,11 @@
   </data>
   <data name="USERASSEMBLY_PATCH_SUCCESS" xml:space="preserve">
     <value>Successfully patched UserAssembly.dll !</value>
+  </data>
+  <data name="USE_HTTP" xml:space="preserve">
+    <value>Use HTTP</value>
+  </data>
+  <data name="USE_ONLY_PROXY" xml:space="preserve">
+    <value>Use only proxy</value>
   </data>
 </root>
