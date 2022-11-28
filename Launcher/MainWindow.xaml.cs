@@ -1,10 +1,10 @@
-﻿using PU_Test.Common.Patch;
-using PU_Test.Model;
+﻿using Launcher.Common.Patch;
+using Launcher.Model;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 
-namespace PU_Test
+namespace Launcher
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

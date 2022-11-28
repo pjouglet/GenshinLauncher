@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace PU_Test.Pages
+namespace Launcher.Pages
 {
     /// <summary>
     /// BlankPage.xaml 的交互逻辑

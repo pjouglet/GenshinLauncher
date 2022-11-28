@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace PU_Test.Pages
+namespace Launcher.Pages
 {
     /// <summary>
     /// SettingPage.xaml 的交互逻辑

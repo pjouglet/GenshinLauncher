@@ -1,6 +1,6 @@
 ﻿using Launcher.Common.Patch;
 using Newtonsoft.Json;
-using PU_Test.Model;
+using Launcher.Model;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -9,9 +9,9 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
-using static PU_Test.Model.GameInfo;
+using static Launcher.Model.GameInfo;
 
-namespace PU_Test.Common.Patch
+namespace Launcher.Common.Patch
 {
     internal class PatchHelper
     {

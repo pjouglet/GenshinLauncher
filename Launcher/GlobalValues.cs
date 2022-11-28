@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace PU_Test
+namespace Launcher
 {
     internal static class GlobalValues
     {

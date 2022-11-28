@@ -31,12 +31,12 @@
 	```
 	You must install .NET Desktop Runtime to run this application.
 	Architecture: x64
-	App host version: 6.0.7
+	App host version: 7.0.0
 	Would you like to download it now?
 	Learn about runtime installation:
 	https://aka.ms/dotnet/app-launch-failed
 	```
-	前往 [https://dotnet.microsoft.com/zh-cn/download/dotnet/6.0](https://dotnet.microsoft.com/zh-cn/download/dotnet/thank-you/runtime-desktop-6.0.8-windows-x64-installer)下载运行环境
+	前往 [https://dotnet.microsoft.com/zh-cn/download/dotnet/7.0](https://dotnet.microsoft.com/zh-cn/download/dotnet/thank-you/runtime-desktop-7.0.0-windows-x64-installer)下载运行环境
 + 其他  
 	前往 [issues](https://github.com/gc-toolkit/GenshinLauncher/issues)具体描述你遇到的问题
 

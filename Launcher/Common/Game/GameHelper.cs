@@ -5,7 +5,7 @@ using System.IO;
 using System.Text;
 using System.Windows;
 
-namespace PU_Test.Common.Game
+namespace Launcher.Common.Game
 {
     internal class GameHelper
     {

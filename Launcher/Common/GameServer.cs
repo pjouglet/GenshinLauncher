@@ -1,6 +1,6 @@
 ﻿using Launcher.Model;
 using Newtonsoft.Json;
-using PU_Test.Model;
+using Launcher.Model;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,7 +8,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PU_Test.Common
+namespace Launcher.Common
 {
     public static class ServerInfoGetter
     {

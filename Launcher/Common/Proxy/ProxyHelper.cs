@@ -1,5 +1,5 @@
 ﻿using Microsoft.Win32;
-using PU_Test.Model;
+using Launcher.Model;
 using System;
 using System.Diagnostics;
 using System.Net;
@@ -8,7 +8,7 @@ using Titanium.Web.Proxy;
 using Titanium.Web.Proxy.EventArguments;
 using Titanium.Web.Proxy.Models;
 
-namespace PU_Test.Common.Proxy
+namespace Launcher.Common.Proxy
 {
     internal static class ProxyHelper
     {

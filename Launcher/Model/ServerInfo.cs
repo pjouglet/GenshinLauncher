@@ -1,4 +1,4 @@
-﻿namespace PU_Test.Model
+﻿namespace Launcher.Model
 {
     public class ServerInfo
     {

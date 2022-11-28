@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace PU_Test.Model
+namespace Launcher.Model
 {
     internal class GameInfo
     {

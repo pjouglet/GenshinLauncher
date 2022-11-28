@@ -3,7 +3,7 @@ using System;
 using System.Net;
 using System.Windows;
 
-namespace PU_Test
+namespace Launcher
 {
     /// <summary>
     /// Interaction logic for App.xaml

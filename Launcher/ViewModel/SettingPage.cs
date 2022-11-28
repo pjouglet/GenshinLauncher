@@ -2,14 +2,14 @@
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Win32;
 using Newtonsoft.Json;
-using PU_Test.Common.Game;
-using PU_Test.Common.Patch;
-using PU_Test.Model;
+using Launcher.Common.Game;
+using Launcher.Common.Patch;
+using Launcher.Model;
 using System;
 using System.IO;
 using System.Windows;
 
-namespace PU_Test.ViewModel
+namespace Launcher.ViewModel
 {
     partial class SettingPage : ObservableObject
     {

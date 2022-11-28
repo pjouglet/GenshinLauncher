@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace PU_Test.Model
+namespace Launcher.Model
 {
     partial class LauncherConfig : ObservableObject
     {

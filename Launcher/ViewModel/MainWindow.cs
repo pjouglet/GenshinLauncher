@@ -2,11 +2,11 @@
 using CommunityToolkit.Mvvm.Input;
 using Launcher.Model;
 using Newtonsoft.Json;
-using PU_Test.Common;
-using PU_Test.Common.Game;
-using PU_Test.Common.Patch;
-using PU_Test.Common.Proxy;
-using PU_Test.Model;
+using Launcher.Common;
+using Launcher.Common.Game;
+using Launcher.Common.Patch;
+using Launcher.Common.Proxy;
+using Launcher.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 
-namespace PU_Test.ViewModel
+namespace Launcher.ViewModel
 {
     partial class MainWindow : ObservableObject
     {
