@@ -106,6 +106,15 @@ namespace Launcher.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 请吧程序目录下的 err.log 提交至项目issues！.
+        /// </summary>
+        public static string ERROR_SUBMITION {
+            get {
+                return ResourceManager.GetString("ERROR_SUBMITION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 补丁失败.
         /// </summary>
         public static string FAILED {
@@ -232,6 +241,15 @@ namespace Launcher.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 已有一个程序实例运行.
+        /// </summary>
+        public static string ONLY_ONE_INSTANCE_ALLOWED {
+            get {
+                return ResourceManager.GetString("ONLY_ONE_INSTANCE_ALLOWED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 官方.
         /// </summary>
         public static string PATCH_OFFICIAL {
@@ -273,6 +291,15 @@ namespace Launcher.Resources {
         public static string PKG_VERSION_NOT_FOUND {
             get {
                 return ResourceManager.GetString("PKG_VERSION_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 程序崩溃了！.
+        /// </summary>
+        public static string PROGRAM_CRASHED {
+            get {
+                return ResourceManager.GetString("PROGRAM_CRASHED", resourceCulture);
             }
         }
         

@@ -132,6 +132,9 @@
   <data name="CONFIRM" xml:space="preserve">
     <value>Confirm</value>
   </data>
+  <data name="ERROR_SUBMITION" xml:space="preserve">
+    <value>Please submit the err.log to issue tracker.</value>
+  </data>
   <data name="FAILED" xml:space="preserve">
     <value>Failed</value>
   </data>
@@ -174,6 +177,9 @@
   <data name="NO_BACKUP_FOUND" xml:space="preserve">
     <value>No backup file found !</value>
   </data>
+  <data name="ONLY_ONE_INSTANCE_ALLOWED" xml:space="preserve">
+    <value>Another instance of the application is already running.</value>
+  </data>
   <data name="PATCH_OFFICIAL" xml:space="preserve">
     <value>Official</value>
   </data>
@@ -188,6 +194,9 @@
   </data>
   <data name="PKG_VERSION_NOT_FOUND" xml:space="preserve">
     <value>pkg_version file not found !</value>
+  </data>
+  <data name="PROGRAM_CRASHED" xml:space="preserve">
+    <value>Error</value>
   </data>
   <data name="RESTORE_FAILED_NOT_OFFICIAL" xml:space="preserve">
     <value>Backup file is not an official one. Restore failed</value>

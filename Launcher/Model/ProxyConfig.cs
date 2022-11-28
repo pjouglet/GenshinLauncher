@@ -4,7 +4,7 @@
     {
         public bool ProxyEnable = false;
 
-        public ProxyConfig(bool proxyEnable, string proxyServer,bool usehttp=false)
+        public ProxyConfig(bool proxyEnable, string proxyServer, bool usehttp = false)
         {
             ProxyEnable = proxyEnable;
             ProxyServer = proxyServer;

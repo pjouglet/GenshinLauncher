@@ -27,7 +27,7 @@ namespace Launcher
 
             if (!ret)
             {
-                MessageBox.Show("已有一个程序实例运行");
+                MessageBox.Show(Launcher.Resources.Strings.ONLY_ONE_INSTANCE_ALLOWED);
                 Environment.Exit(0);
             }
 
@@ -40,7 +40,7 @@ namespace Launcher
             Console.WriteLine("UnHandled Exception Caught : " + e.Message);
             Console.WriteLine("Runtime terminating: {0}", args.IsTerminating);
 
-            MessageBox.Show(e.Message + "\n" + "请吧程序目录下的 err.log 提交至项目issues！", "程序崩溃了！");
+            MessageBox.Show(e.Message + "\n" + Launcher.Resources.Strings.ERROR_SUBMITION, Launcher.Resources.Strings.PROGRAM_CRASHED);
             System.IO.File.WriteAllText("err.log", e.Message + JsonConvert.SerializeObject(e));
             Environment.Exit(0);
 
@@ -49,10 +49,7 @@ namespace Launcher
         {
 
             if (GlobalValues.mainWindow.vm.proxyController != null)
-            {
                 GlobalValues.mainWindow.vm.proxyController.Stop();
-
-            }
 
             base.OnExit(e);
         }

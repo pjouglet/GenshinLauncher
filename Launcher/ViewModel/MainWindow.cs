@@ -1,12 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Launcher.Model;
-using Newtonsoft.Json;
 using Launcher.Common;
 using Launcher.Common.Game;
 using Launcher.Common.Patch;
 using Launcher.Common.Proxy;
 using Launcher.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -124,7 +123,7 @@ namespace Launcher.ViewModel
             {
                 if (proxyController == null)
                 {
-                    proxyController = new ProxyHelper.ProxyController(host: launcherConfig.ProxyConfig.ProxyServer, port: launcherConfig.ProxyConfig.ProxyPort,usehttp:launcherConfig.ProxyConfig.UseHttp);
+                    proxyController = new ProxyHelper.ProxyController(host: launcherConfig.ProxyConfig.ProxyServer, port: launcherConfig.ProxyConfig.ProxyPort, usehttp: launcherConfig.ProxyConfig.UseHttp);
                     proxyController.Start();
                     StartGameBtnText = Launcher.Resources.Strings.STOP_PROXY;
                     return;
@@ -164,9 +163,9 @@ namespace Launcher.ViewModel
                 IsGameRunning = true;
 
                 proxyController = new ProxyHelper.ProxyController(
-                    host: launcherConfig.ProxyConfig.ProxyServer, 
+                    host: launcherConfig.ProxyConfig.ProxyServer,
                     port: launcherConfig.ProxyConfig.ProxyPort,
-                    usehttp : launcherConfig.ProxyConfig.UseHttp
+                    usehttp: launcherConfig.ProxyConfig.UseHttp
                     );
                 proxyController.Start();
                 StartGameBtnText = Launcher.Resources.Strings.STOP_PROXY;

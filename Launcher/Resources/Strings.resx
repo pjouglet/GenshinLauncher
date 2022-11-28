@@ -132,6 +132,9 @@
   <data name="CONFIRM" xml:space="preserve">
     <value>确认</value>
   </data>
+  <data name="ERROR_SUBMITION" xml:space="preserve">
+    <value>请吧程序目录下的 err.log 提交至项目issues！</value>
+  </data>
   <data name="FAILED" xml:space="preserve">
     <value>补丁失败</value>
   </data>
@@ -174,6 +177,9 @@
   <data name="NO_BACKUP_FOUND" xml:space="preserve">
     <value>未找到备份文件！</value>
   </data>
+  <data name="ONLY_ONE_INSTANCE_ALLOWED" xml:space="preserve">
+    <value>已有一个程序实例运行</value>
+  </data>
   <data name="PATCH_OFFICIAL" xml:space="preserve">
     <value>官方</value>
   </data>
@@ -188,6 +194,9 @@
   </data>
   <data name="PKG_VERSION_NOT_FOUND" xml:space="preserve">
     <value>找不到pkg_version文件！</value>
+  </data>
+  <data name="PROGRAM_CRASHED" xml:space="preserve">
+    <value>程序崩溃了！</value>
   </data>
   <data name="RESTORE_FAILED_NOT_OFFICIAL" xml:space="preserve">
     <value>备份文件不是官方文件，恢复失败！</value>

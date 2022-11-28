@@ -1,5 +1,5 @@
-﻿using Microsoft.Win32;
-using Launcher.Model;
+﻿using Launcher.Model;
+using Microsoft.Win32;
 using System;
 using System.Diagnostics;
 using System.Net;
@@ -68,11 +68,11 @@ namespace Launcher.Common.Proxy
             private string fakeHost;
             private bool usehttp;
 
-            public ProxyController(string port, string host, bool usehttp=false)
+            public ProxyController(string port, string host, bool usehttp = false)
             {
                 this.port = port;
                 this.fakeHost = host;
-                this.usehttp =  usehttp;
+                this.usehttp = usehttp;
             }
 
             private bool IsRun;

@@ -1,10 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Microsoft.Win32;
-using Newtonsoft.Json;
 using Launcher.Common.Game;
 using Launcher.Common.Patch;
 using Launcher.Model;
+using Microsoft.Win32;
+using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Windows;

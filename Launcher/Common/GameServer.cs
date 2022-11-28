@@ -1,6 +1,5 @@
 ﻿using Launcher.Model;
 using Newtonsoft.Json;
-using Launcher.Model;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -96,7 +95,7 @@ namespace Launcher.Common
             try
             {
                 dt = JsonConvert.DeserializeObject<REPDT.Root>(r);
-                if (dt==null)
+                if (dt == null)
                 {
                     return new ServerInfo();
                 }
@@ -108,7 +107,7 @@ namespace Launcher.Common
             }
 
             var SI = new ServerInfo();
-            if (dt.status==null)
+            if (dt.status == null)
             {
                 return new ServerInfo();
             }

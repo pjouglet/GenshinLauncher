@@ -1,13 +1,9 @@
-﻿using Launcher.Common.Patch;
+﻿using Launcher.Model;
 using Newtonsoft.Json;
-using Launcher.Model;
 using System;
-using System.Diagnostics;
 using System.IO;
-using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Windows;
 using static Launcher.Model.GameInfo;
 
@@ -95,7 +91,7 @@ namespace Launcher.Common.Patch
             string official = string.Empty;
             string backup = string.Empty;
 
-            if(!File.Exists(FILE_NAME))
+            if (!File.Exists(FILE_NAME))
                 throw new Exception(Launcher.Resources.Strings.PKG_VERSION_NOT_FOUND);
 
             if (FILE_NAME.Contains(METADATA_FILE_NAME))
@@ -175,7 +171,7 @@ namespace Launcher.Common.Patch
         public PatchType GetPatchStatue()
         {
             PatchType result = PatchType.None;
-            
+
             try
             {
                 var official = GetHashFromPkgVer("UserAssembly.dll");
