@@ -15,6 +15,7 @@
     d:DataContext="{d:DesignInstance Type=vm:MainWindow}"
     Loaded="Window_Loaded"
     ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Window.Background>
         <ImageBrush x:Name="Background" />
